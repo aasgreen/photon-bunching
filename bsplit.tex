@@ -1,7 +1,8 @@
 \documentclass[12pt]{article}
 \author{Adam A. S. Green}
 \title{Quantum Memory as a Beamsplitter}
-\usepackage{amssymb, amsmath, hyperref,mathscr}
+\usepackage{amssymb, amsmath, hyperref}
+\DeclareMathAlphabet{\mathscr}{OT1}{pzc}{m}{it}
 \usepackage{epsfig, graphicx}
 \usepackage{verbatim}
 \begin{document}
@@ -13,7 +14,7 @@
 
 \section{Demonstration}
 
-Any quantum memory that has the `beamsplitter' like hamiltonian will show this:
+Any quantum memory that has the `beamplitter' like hamiltonian will show this:
 \begin{equation}
 H_{\textrm{int}}= J^* a^\dagger b + J a b^\dagger
 \end{equation}
@@ -65,22 +66,23 @@ E_\textrm{in} \int dw' \phi(\omega') E_0^\dagger(\omega') = \mathscr{F}[\phi(\om
 \end{equation}
 
 And we know that the only terms that will survive in $\langle \phi |$ must contain $E_in(t) sigma(t)$. This leaves the following expansion:
-\begin{align}
-\langle \phi_{20}| \Psi \rangle &= 2^{\frac{3}{2}} i e^{-2\tau} \sigma(0) 
-int^\tau' E_in(\tau') \frac{g(\tau')}{\sqrt{\kappa}} e^\tau' \sigma^\dagger(0) \int dw' E_0(\omega') \psi(\omega')
-&= 2^{\frac{3}{2} i e^{-2 \tau} \int d \tau' e^{\tau'} \chi(\tau')
-\end{equation}
-where $\chi(\tau') = \mathscr{F}(\psi{\omega)) \frac{\sqrt{\kappa}}{g(\tau')}$
+%\begin{align}
+%\langle \phi_{20}| \Psi \rangle &= 2^{\frac{3}{2}} i e^{-2\tau} \sigma(0) 
+%int^\tau' E_{in}(\tau') \frac{g(\tau')}{\sqrt{\kappa}} e^{w\tau'} \sigma^\dagger(0) \int dw' E_0(\omega') \psi(\omega')\\
+%\end{align}
+%&= 2^{\frac{3}{2} i e^{-2 \tau} \int d \tau' e^{\tau'} \chi(\tau')
+%\end{align}
+where $\chi(\tau') = \mathscr{F}(\psi(\omega)) \frac{\sqrt{\kappa}}{g(\tau')}$
 
-Now, we can also make a simplifying assumption, by noting that the optimal read-in condition is met when $\mathscr{F}(\psi(\omega)) = \sqrt{\frac{2}{\kappa} g(t) e^{\tau(t)}$ and under this condition is met, the above equation reduces to:
+Now, we can also make a simplifying assumption, by noting that the optimal read-in condition is met when $\mathscr{F}(\psi(\omega)) = \sqrt{\frac{2}{\kappa}} g(t) e^{\tau(t)}$ and under this condition is met, the above equation reduces to:
 \begin{align}
-\langle \phi_{20}| \Psi \rangle & = 2^{\frac{3}{2} i e^{-2\tau} \int d \tau' e^{2 \tau} \\
-& = 2^{\frac{3}{2} i\left(1- exp{-2\tau}\right)
-\end{equation}
+\langle \phi_{20}| \Psi \rangle & = 2^{\frac{3}{2}} i e^{-2\tau} \int d \tau' e^{2 \tau} \\
+& = 2^{\frac{3}{2}} i\left(1- exp{-2\tau}\right)
+\end{align}
 
-And to be in the 50-50 beamsplitter regime, we know that this has to be equatl to i\frac{1}{\sqrt{2}}, so we can solve for \tau for this to be true. In fact, it can be seen that if $\tau = ln(\sqrt(2)$ then the above equation reduces to:
+And to be in the 50-50 beamsplitter regime, we know that this has to be equatl to i$\frac{1}{\sqrt{2}}$, so we can solve for $\tau$ for this to be true. In fact, it can be seen that if $\tau = ln(\sqrt(2)$ then the above equation reduces to:
 \begin{align}
-\langle \phi_{20}| \Psi \rangle &= 2^{\frac{3}{2} i \frac{1}{2} \\
+\langle \phi_{20}| \Psi \rangle &= 2^{\frac{3}{2}} i \frac{1}{2} \\
 &= \frac{1}{\sqrt{2}}
 \end{align}
 \end{document}
