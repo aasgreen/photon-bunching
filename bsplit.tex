@@ -1,16 +1,14 @@
 \documentclass[12pt]{article}
-\author{Adam A. S. Green}
-\title{Quantum Memory as a Beamsplitter}
 \usepackage{amssymb, amsmath, hyperref}
 \DeclareMathAlphabet{\mathscr}{OT1}{pzc}{m}{it}
 \usepackage{epsfig, graphicx}
 \usepackage{verbatim}
+\usepackage{fullpage}
+\title{Photon-Bunching in Quantum Memory}
 \begin{document}
 \bibliographystyle{plain}
-
 \maketitle
 \section{Introduction}
-
 
 \section{Demonstration}
 
@@ -85,5 +83,153 @@ And to be in the 50-50 beamsplitter regime, we know that this has to be equatl t
 \langle \phi_{20}| \Psi \rangle &= 2^{\frac{3}{2}} i \frac{1}{2} \\
 &= \frac{1}{\sqrt{2}}
 \end{align}
-\end{document}
 
+\section{$| \psi_{11} \rangle$}
+Now, we can look at the term where there is an excitation in the field, and in the atomic memory.
+
+\begin{align}
+\left | \langle \psi_{11} | \Phi \rangle \right | ^2 &= \left | \langle 0 | E_\textrm{out}(t) \sigma(t') \int d \omega \phi(\omega)E^\dagger_0(\omega)
+\sigma^\dagger(0) | 0 \rangle \right |^2 \\
+\end{align}
+
+and by inserting the known equations for $E_\textrm{out}$ and $\sigma(t)$, we arrive at the following expansion:
+
+\begin{align}
+\left | \langle \psi_{11} | \Phi \rangle \right | ^2 &= 
+   \left(  E_\textrm{in}(t) + i \sqrt{\frac{2}{\kappa}} g(t) \sigma(t) \right )\\
+   & \qquad \qquad \left (\sigma(0) e^{-\tau} + i\sqrt{2} e^{-\tau} \int^\tau_w d t' e^\tau E_\textrm{in}(t) \frac{g(t)}{\sqrt{\kappa}}\right)\\
+   &\qquad \qquad \left(\int d \omega \phi(\omega)E^\dagger_0(\omega) \right )
+\end{align}
+
+Expanding this out, we get the following terms:
+\begin{align}
+\left | \langle \psi_{12} | \Phi \rangle \right | ^2 &= 
+E_\textrm{in}(t) \left( \sigma(0) e^{-\tau(t')} + i\sqrt{2} e^{-\tau(t')} \int^{t'} d t'' e^{\tau(t'')} E_\textrm{in}(t'') \frac{g(t'')}{\sqrt{\kappa}} \right ) \\
+&\qquad+ i \sqrt{\frac{2}{\kappa}}g(t)\left (\sigma(0) e^{-\tau} + i\sqrt{2} e^{-\tau} \int^{t}d t''' e^{\tau(t''')} E_\textrm{in}(t''') \frac{g(t''')}{\sqrt{\kappa}} \right) \times\\
+&\qquad \left(\sigma(0) e^{-\tau(t')} + i\sqrt{2} e^{-\tau(t')} \int^{t'} d t'' e^\tau(t'') E_\textrm{in}(t'') \frac{g(t'')}{\sqrt{\kappa}}\right) 
+\end{align}
+
+If we apply the commutation relations, we can get rid of any terms that don't have $E_\textrm{in}(t)$ and $\sigma(0)$ in them, as any term in the above equation that doesn't have both of these operators will be anhilated when $|\phi_{11} \rangle$ is applied to =$|\Psi\rangle$
+
+This leaves us with the following terms:
+\begin{align}
+\left | \langle \psi_{11} | \Phi \rangle \right | ^2 &= \int dt \left | \langle 0 | E_\textrm{in}(t) \sigma(0) e^{-\tau(t')}
+\sigma^\dagger(0) \int d\omega E_0(\omega) \phi(\omega) | 0 \rangle -\right. \\
+&\qquad  \langle 0 | \frac{2}{\sqrt{\kappa}} g(t) \sigma(0) e^{-\tau(t) -\tau(t')}
+\int^{t'} dt'' e^{\tau(t'')} E_\textrm{in}(t'')\frac{g(t'')}{\sqrt{\kappa}} \sigma^\dagger(0) \int d\omega E_0(\omega) \phi(\omega) | 0 \rangle - \\
+& \qquad \left. \langle 0 | \frac{2}{\sqrt{\kappa}} g(t) \sigma(0) e^{-\tau(t) -\tau(t')}
+\int^{t} dt''' e^{\tau(t''')} E_\textrm{in}(t''')\frac{g(t''')}{\sqrt{\kappa}} \sigma^\dagger(0) \int d\omega E_0(\omega) \phi(\omega) | 0 \rangle \right |^2
+\end{align}
+
+Futhermore, we have already shown that 
+
+\begin{align}
+\langle 0 |E_\textrm{in}(t) \int d\omega E^\dagger_0(\omega) | 0 \rangle= \mathscr{F}\{\phi(\omega)\} = \tilde{\phi}(t)
+\end{align}
+
+using this property, the equation reduces to:
+%As well, if we make the simplifying assumption that $\tilde{\phi}(t) = \sqrt{\frac{2}{\kappa}} g(t)e^{\tau(t)}$, then 
+%the equation reduces to:
+
+\begin{align}
+\left | \langle \psi_{11} | \Phi \rangle \right | ^2 &= \int dt\left| \tilde{\phi}(t)e^{-\tau(t')} -2 g(t) e^{-\tau(t)-\tau(t')} \int^{t'} \tilde{\phi}(t'')\frac{g(t'')}{\sqrt{\kappa}} dt'' - \right.\\
+&\left. \qquad 2 g(t) e^{-\tau(t)-\tau(t')} \int^t \tilde{\phi}(t''')\frac{g(t''')}{\sqrt{\kappa}} dt''' \right |^2 
+\end{align}
+
+This is a completely general equation, as we have not assumed anything about the shape of the incoming field. 
+To simply this equation however, we can make the assumption that the incoming field meets the optimal condition discussed
+in the original paper.
+
+This allows us to do two things. First, because the field is optimally conditioned, all of the efficiency is controlled by the value of $\tau_w$, so we only have one variable to deal with. Second, it will allow the above equation to be integrated very simply.
+
+The optimal condition requires that: $\tilde{\phi}(t) = \sqrt{\frac{2}{\kappa}} g(t) e^{\tau(t)}$
+Inserting this into our equation, we obtain:
+
+\begin{align}
+\left | \langle \psi_{11} | \Phi \rangle \right | ^2 &= \int dt \left | \sqrt{\frac{2}{\kappa}} g(t) e^{\tau(t)-\tau(t')} \right.
+      -2\sqrt{2}g(t) e^{-\tau(t)-\tau(t')} \int^{t'} \frac{g(t'')^2}{\kappa} e^{2\tau(t'')} dt'' \\
+       &\qquad \left.-2\sqrt{2} g(t) e^{\tau(t')-\tau(t)} \int^t \frac{g(t''')^2}{\kappa} e^{2\tau(t''')} dt'''\right |^2
+\end{align}
+
+and, knowing that $\frac{g^2(t)}{\kappa}dt = d\tau$, the above can be integrate to obtain:
+
+\begin{align}
+\left | \langle \psi_{11} | \Phi \rangle \right | ^2 &=\int dt \left| \sqrt{\frac{2}{\kappa}} g(t) e^{\tau(t)-\tau(t')} - \sqrt{2} g(t)\left( e^{\tau(t)-\tau(t')} - e^{-\tau(t')-\tau(t)} \right )\right.\\
+&\left. \qquad -\sqrt{2} g(t) \left( e^{\tau(t')-\tau(t)} - e^{-\tau(t')-\tau(t)} \right)\right|^2 
+\end{align}
+
+which can be factored to obtain:
+\begin{align}
+\left | \langle \psi_{11} | \Phi \rangle \right | ^2 i &= \int dt \left|\sqrt{\frac{2}{\kappa}} g(t) e^{-\tau(t)} \left ( e^{\tau(t')} -2 e^{-\tau(t')} \right ) \right |^2 
+\end{align}
+
+If use the condition that $\eta=0.5$, then $\tau(t') = \textrm{ln}(\sqrt{2})$. It should be noted that $\tau(t=\infty) = \tau(t')$. That is, we have let an infinite time pass when we do the measurment. We are preforming a measurement on the atomic ensemble at time $t'$, but we have left out photon decectors on from time $t_0$ to $t'$. However, because we know what $\tau(t')$ is equal to, we can evaluate the term in brackets in the above equation.
+
+\begin{align}
+\left | \langle \psi_{11} | \Phi \rangle \right | ^2 = \int dt \left| \sqrt{\frac{2}{\kappa}} g(t) e^{-\tau(t)} \left ( e^{\textrm{ln}(\sqrt{2})} -2 \frac{1}{e^{\textrm{ln}({\sqrt{2}})}} \right ) \right|^2 = 0 
+\end{align}
+
+This shows that there is zero chance to measure a photon in the reserviour field and an atomic excitation when the quantum is oppurtating at $50\%$ efficieny. This is precisely what is expected for a beam-splitted.
+
+\section{$| \psi_{02} \rangle $}
+
+We could invoke a conservation of probability to show that since this is the only other state that is possible in the double excitation space, it must have probability $1/2$, however it is good to do the calculations out to double check.
+
+The quantity that we are interested in is the probability of measuring a double excitation in the reserviour field:
+
+\begin{align}
+|\langle \psi_{02} | \Psi \rangle |^2 =\int dt \int dt' \left | \langle 0 | E_\textrm{out}(t) E_\textrm{out}(t') \sigma^\dagger(0) \int d \omega \phi(\omega) E_0(\omega) | 0 \rangle \right |^2
+\end{align}
+
+Using the equations for $E_\textrm{out}(t)$, this becomes:
+\begin{align}
+\left | \langle \psi_{02} | \Phi \rangle \right | ^2 & =\int dt \int dt'\left | \left (E_\textrm{in}(t) 
++ i \sqrt{\frac{2}{\kappa}} g(t)\left ( \sigma(0) e^{-\tau} +
+i\sqrt{2} e^{-\tau} \int^t d t''' e^\tau(t''') E_\textrm{in}(t''') \frac{g(t''')}{\sqrt{\kappa}} \right ) \right) \right .\times \\
+ &\qquad \left. \left (E_\textrm{in}(t') + i \sqrt{\frac{2}{\kappa}} g(t')\left( \sigma(0) e^{-\tau(t')} +
+ i\sqrt{2} e^{-\tau(t')} \int^{t'} d t'' e^\tau(t'') E_\textrm{in}(t'') \frac{g(t'')}{\sqrt{\kappa}}\right ) \right ) \right |^2
+\end{align}
+
+ 
+ As before, we know that only terms that contain $E_\textrm{in}$ and $\sigma(0)$ will survive the expansion. With this in 
+ mind, we can reduce the above equation to:
+\begin{align}
+ \left | \langle \psi_{02} | \Phi \rangle \right | ^2 & =\int dt \int dt'\left |\langle 0 | E_\textrm{in}(t) i \sqrt{\frac{2}{\kappa}} g(t') e^{-\tau(t')}\sigma(0) + E_\textrm{in}(t') i \sqrt{\frac{2}{\kappa}} g(t) e^{-\tau(t)}\sigma(0) +\right.\\
+&\qquad -i2\frac{2}{\sqrt{\kappa}}g(t')g(t) e^{-\tau(t')-\tau(t)}\sigma(0) \int ^{t'} dt'' E_\textrm{in}(t'')\frac{g(t'')}{\sqrt{\kappa}} e^{\tau(t'')}\\
+&\qquad \left. -i2\frac{2}{\sqrt{\kappa}}g(t')g(t) e^{-\tau(t')-\tau(t)}\sigma(0) \int ^t dt''' E_\textrm{in}(t''')\frac{g(t''')}{\sqrt{\kappa}} e^{\tau(t''')}| \Psi \rangle\right |^2
+ \end{align}
+ 
+Again, knowing that
+
+
+\begin{align}
+\langle 0 |E_\textrm{in}(t) \int d\omega E^\dagger_0(\omega) | 0 \rangle= \mathscr{F}\{\phi(\omega)\} = \tilde{\phi}(t)
+\end{align}
+and again using the optimization condtion: $\tilde{\phi}(t) = \sqrt{\frac{2}{\kappa}} g(t) e^{\tau}$, we can obtain the following equation:
+
+\begin{align}
+\left | \langle \psi_{02} | \Phi \rangle \right | ^2 & =\int dt \int dt'\left | \frac{2}{\kappa} i g(t) g(t') \left(e^{\tau-\tau'} +e^{-(\tau-\tau')}\right) -\right.\\
+&\qquad \left.i 2\frac{\sqrt{2}}{\kappa} e^{-\tau-\tau(t')}\left( \int^{t'} d \tau(t'') e^{2\tau(t'')} - \int^t d \tau(t''') e^{2\tau(t''')} \right) \right |^2
+\end{align}
+
+Integrating this, we obtain:
+\begin{align}
+\left | \langle \psi_{02} | \Phi \rangle \right | ^2 & =\int dt \int dt'\left | \frac{2}{\kappa} i g(t) g(t') \left(e^{\tau-\tau'} +e^{-(\tau-\tau')}\right) -\right.\\
+&\qquad \left.i 2\frac{\sqrt{2}}{\kappa} e^{-\tau-\tau(t')}\left( e^{2\tau(t')}-1 - e^{2\tau(t)}-1 \right) \right |^2
+ & =\int dt \int dt'\left | \frac{2}{\kappa} i g(t) g(t') \left(e^{\tau-\tau'} +e^{-(\tau-\tau')}\right) +\right.\\
+&\qquad \left.i 2\frac{\sqrt{2}}{\kappa} \left( e^{\tau(t')-\tau(t)} + e^{\tau(t)-\tau(t')}-2e^{-\tau(t)-\tau(t')} \right) \right |^2
+\end{align}
+
+There is some cancellation, leaving:
+
+\begin{align}
+\left | \langle \psi_{02} | \Phi \rangle \right | ^2 & =\int dt \int dt'\left |i 2\frac{\sqrt{2}}{\kappa} g(t)g(t') e^{-\tau(t)-\tau(t')} \right|^2 \\
+&= \frac{8}{4} \left ( e^{-2\tau_w}-1\right)^2\\
+\end{align}
+
+Now, if we require that $\tau_w = \textrm{ln}(\sqrt{2})$, this further reduces to:
+\begin{align}
+\left | \langle \psi_{02} | \Phi \rangle \right | ^2 &=2(-\frac{1}{2})(-\frac{1}{2})=\frac{1}{2}
+\end{align}
+
+\end{document}
