@@ -3,13 +3,14 @@
 \DeclareMathAlphabet{\mathscr}{OT1}{pzc}{m}{it}
 \usepackage{epsfig, graphicx}
 \usepackage{verbatim}
-\usepackage{fullpage}
+\usepackage{fullpage,setspace}
 \title{Photon-Bunching in Quantum Memory}
+\author{Adam A. G. Green\\Univeristy of Calgary}
 \begin{document}
 \bibliographystyle{plain}
 \maketitle
 \section{Introduction}
-
+\doublespacing
 \section{Demonstration}
 
 Any quantum memory that has the `beamplitter' like hamiltonian will show this:
@@ -26,77 +27,38 @@ We have previously derived the heisenburg equations of motion for the operators 
 
 The heisenburg state we prepared for photon bunching is:
 \begin{equation}
-| \psi \rangle = \sigma_\textrm{z}(t=0)^\dagger \int d\omega \psi(w) E_0^\dagger(w) | 0 \rangle
+| \psi \rangle = \sigma(t=0)^\dagger \int d\omega \psi(w) E_0^\dagger(w) | 0 \rangle
 \end{equation}
 
-Where $E_0(\omega)$ is the creation operator of a photon of frequency $\omega$, $\psi(\omega)$ is the single-photon envelope in frequency space, and $\sigma_\textrm{z}(t=0)$ is the initial creation operator of a atomic excitation. In what follows, we will be assuming that a photon is already stored in the memory at $t=0$, and that another pulse is incident.
+Where $E_0(\omega)$ is the creation operator of a photon of frequency $\omega$, $\psi(\omega)$ is the single-photon envelope in frequency space, and $\sigma(t=0)$ is the initial creation operator of a atomic excitation. In what follows, we will be assuming that a photon is already stored in the memory at $t=0$, and that another pulse is incident.
 
 The three terms we are concered with are:
 \begin{align}
-\langle \psi_{20}| \Psi \rangle &=\langle 0 | \sigma_\textrm{z} \sigma_\textrm{z} | \Psi \rangle\\
-\langle \psi_{11} | \Psi \rangle& =\langle 0 | \sigma_\textrm{z} \int dt E_out(t) | \Psi \rangle\\
-\langle \psi_{02} | \Psi \rangle &= \langle 0 | \int dt \int dt' E_\textrm{out}(t) E_\textrm{out}(t') | \Psi \rangle
+\langle \psi_{20}| \Psi \rangle &=\langle 0 | \frac{1}{\sqrt{2}}\sigma \sigma | \Psi \rangle\\
+\langle \psi_{11} | \Psi \rangle& =\langle 0 |  \sigma(t') \int^{t'} dt E_\textrm{out}(t) | \Psi \rangle\\
+\langle \psi_{02} | \Psi \rangle &= \langle 0 |  \frac{1}{\sqrt{2}}\int dt \int dt' E_\textrm{out}(t) E_\textrm{out}(t') | \Psi \rangle
 \end{align}
 
 Where $| \psi_{20}$ is a double excitation in the photon field, $| \psi_{11} \rangle $ is photon and an atomic excitation, and $ | \psi_{02} \rangle $ is a double atomic excitation. 
-
-\section{ $| \psi_{20} \rangle$}
-
-\begin{align}
-\langle \phi_{20}| \Psi \rangle &=\langle 0 |\frac{1}{\sqrt{2}} \sigma_\textrm{z} \sigma_\textrm{z} | \Psi \rangle\\
-\langle \phi_{20}| \Psi \rangle &=\langle 0 | \frac{1}{\sqrt{2}} \sigma_\textrm{z} \sigma_\textrm{z} 
-\sigma_\textrm{z}(t=0)^\dagger \int d\omega \psi(w) E_0^\dagger(w) | 0 \rangle
-\end{align}
-
-and the heisenburg equations for the operators $E_\textrm{out}$ and $\sigma_\textrm{z}$ are:
-\begin{equation}
-E_\textrm{out}(t) = E_\textrm{in}(t) + i \sqrt{\frac{2}{\kappa}} g(t) \sigma(t)
-\sigma(t) = \sigma(0) e^{-\tau} + i\sqrt{2} e^{-\tau} \int^\tau_w d t' e^\tau E_\textrm{in}(t) \frac{g(t)}{\sqrt{\kappa}}
-\end{equation}
-Where $\tau = \int^t dt g^2(t)/\kappa$, $g(t)$ is a time-dependant coupling between the atomic ensemble and the cavity field, and $\kappa$ is the decay rate of the cavity. Inserting these equations we obtain:
-\begin{multline}
-\langle \phi_{20}| \Psi \rangle =\langle 0 | \frac{1}{\sqrt{2}} \left (  \sigma(0) e^{-\tau} + i\sqrt{2} e^{-\tau} \int^\tau_w d t' e^\tau E_\textrm{in}(t) \frac{g(t)}{\sqrt{\kappa}} \right )\\ \left ( \sigma(0) e^{-\tau} + i\sqrt{2} e^{-\tau} \int^\tau_w d t' e^\tau E_\textrm{in}(t) \frac{g(t)}{\sqrt{\kappa}} \right ) \sigma_\textrm{z}(t=0)^\dagger \int d\omega \psi(w) E_0^\dagger(w) | 0 \rangle
-\end{multline}
-
-We know that $E_\textrm{in}$ is the input-pulse, and can also be defined in frequency space as $E_\textrm{int} = \int dw E_0(\omega) $ and furthermore, $[E_0(\omega), E_0^\dagger(\omega') ] = \delta(\omega-\omega')$, thus we know that 
-\begin{equation}
-E_\textrm{in} \int dw' \phi(\omega') E_0^\dagger(\omega') = \mathscr{F}[\phi(\omega)]
-\end{equation}
-
-And we know that the only terms that will survive in $\langle \phi |$ must contain $E_\textrm{in}(t) sigma(t)$. This leaves the following expansion:
-\begin{align}
-\langle \psi_{20}| \Psi \rangle &= 2 i e^{-2\tau} \sigma(0) 
-\int^{\tau'} E_{in}(\tau') \frac{g(\tau')}{\sqrt{\kappa}} e^{\tau'} \sigma^\dagger(0) \int dw' E_0(\omega') \psi(\omega')\\ 
-&= 2 i e^{-2 \tau} \int d \tau' e^{\tau'} 
- \mathscr{F}(\psi(\omega)) \frac{\sqrt{\kappa}}{g(\tau')}
-\end{align}
-
-Now, we can also make a simplifying assumption, by noting that the optimal read-in condition is met when $\mathscr{F}(\psi(\omega)) = \sqrt{\frac{2}{\kappa}} g(t) e^{\tau(t)}$ and under this condition is met, the above equation reduces to:
-\begin{align}
-\langle \psi_{20}| \Psi \rangle & = 2\sqrt{2} i e^{-2\tau} \int d \tau' e^{2 \tau} \\
-& = \sqrt{2} i\left(1- e^{-2\tau}\right)
-\end{align}
-
-Also, as previously shown, we know that $\tau$ is equal to $\tau_w = \ln{\sqrt{2}}$, so we can evaluate the above equation to obtain:
-\begin{align}
-\langle \psi_{20}| \Psi \rangle &= \sqrt{2} i \frac{1}{2} \\
-&= \frac{i}{\sqrt{2}}
-\end{align}
-
-Now, to obtain the probability, we square this to obtain:
-\begin{equation}
-| \langle \psi_{20}| \Psi \rangle | ^2 = \frac{1}{2}
-\end{equation}
 \section{$| \psi_{11} \rangle$}
-Now, we can look at the term where there is an excitation in the field, and in the atomic memory.
+First, we consider the term that deals with a single excitation in the field and a single
+excitation in the atom. If photon-bunching is seen in this memory, then this term should
+equal zero.
 
 \begin{align}
 \left | \langle \psi_{11} | \Phi \rangle \right | ^2 &=\int^{t'} dt \left | \langle 0 | E_\textrm{out}(t) \sigma(t') \int d \omega \phi(\omega)E^\dagger_0(\omega)
 \sigma^\dagger(0) | 0 \rangle \right |^2 \\
 \end{align}
 
-and by inserting the known equations for $E_\textrm{out}$ and $\sigma(t)$, we arrive at the following expansion:
 
+We also know the equations for $E_\text{out} (t)$ and $\sigma (t)$ from our previous work.
+
+\begin{equation}
+E_\textrm{out}(t) = E_\textrm{in}(t) + i \sqrt{\frac{2}{\kappa}} g(t) \sigma(t)\\
+\sigma(t) = \sigma(0) e^{-\tau} + i\sqrt{2} e^{-\tau} \int^\tau_w d t' e^\tau E_\textrm{in}(t) \frac{g(t)}{\sqrt{\kappa}}
+\end{equation}
+Where $\tau = \int^t dt g^2(t)/\kappa$, $g(t)$ is a time-dependant coupling between the atomic ensemble and the cavity field, and $\kappa$ is the decay rate of the cavity. Inserting these equations we obtain:
+Inserting these gives:
 \begin{align}
 \left | \langle \psi_{11} | \Phi \rangle \right | ^2 &= \int^{t'} dt \left | \langle 0 |
    \left(  E_\textrm{in}(t) + i \sqrt{\frac{2}{\kappa}} g(t) \sigma(t) \right ) \times \right.\\
@@ -111,7 +73,7 @@ Expanding this out, we get the following terms:
 &\left.\qquad \left(\sigma(0) e^{-\tau(t')} + i\sqrt{2} e^{-\tau(t')} \int^{t'} d t'' e^\tau(t'') E_\textrm{in}(t'') \frac{g(t'')}{\sqrt{\kappa}}\right) | \Psi \rangle \right |^2 
 \end{align}
 
-If we apply the commutation relations, we can get rid of any terms that don't have $E_\textrm{in}(t)$ and $\sigma(0)$ in them, as any term in the above equation that doesn't have both of these operators will be anhilated through simple commutations. Ie. if a term only has $E_\textrm{in} E_\textrm{in}$, we know that $|Psi\rangle$ contains a $\sigma^\dagger(0)$, and that $\sigma^\dagger(0)$ and $E_\textrm{in}$ commute, so $\sigma^\dagger(0)$ can move through and act as $\langle 0 | \sigma^\dagger(0) = 0$. So any term that survives must contain terms that don't commute with $E_\textrm{in}$ as well as $\sigma(0)$.
+If we apply the commutation relations, we can get rid of any terms that don't have $E_\textrm{in}(t)$ and $\sigma(0)$ in them, as any term in the above equation that doesn't have both of these operators will be anhilated through simple commutations. Ie. if a term only has $E_\textrm{in} E_\textrm{in}$, we know that $|\Psi\rangle$ contains a $\sigma^\dagger(0)$, and that $\sigma^\dagger(0)$ and $E_\textrm{in}$ commute, so $\sigma^\dagger(0)$ can move through and act as $\langle 0 | \sigma^\dagger(0) = 0$. So any term that survives must contain terms that don't commute with $E_\textrm{in}$ as well as $\sigma(0)$.
 
 This leaves us with the following terms:
 \begin{align}
@@ -123,7 +85,8 @@ This leaves us with the following terms:
 \int^{t} dt''' e^{\tau(t''')} E_\textrm{in}(t''')\frac{g(t''')}{\sqrt{\kappa}} \sigma^\dagger(0) \int d\omega E_0(\omega) \phi(\omega) | 0 \rangle \right |^2
 \end{align}
 
-Futhermore, we have already shown that 
+
+We know that $E_\textrm{in}$ is the input-pulse, and can also be defined in frequency space as $E_\textrm{in} = \int dw e^{-iwt} E_0(\omega) $ and furthermore, $[E_0(\omega), E_0^\dagger(\omega') ] = \delta(\omega-\omega')$, thus we know that 
 
 \begin{align}
 \langle 0 |E_\textrm{in}(t) \int d\omega E^\dagger_0(\omega) | 0 \rangle= \mathscr{F}\{\phi(\omega)\} \equiv \tilde{\phi}(t)
@@ -136,6 +99,8 @@ using this property, the equation reduces to:
 \left | \langle \psi_{11} | \Phi \rangle \right | ^2 &= \int^{t'} dt\left| \tilde{\phi}(t)e^{-\tau(t')} -\frac{2}{\sqrt{\kappa}} g(t) e^{-\tau(t)-\tau(t')} \int^{t'} \tilde{\phi}(t'')\frac{g(t'')}{\sqrt{\kappa}} dt'' - \right.\\
 &\left. \qquad \frac{2}{\sqrt{\kappa}} g(t) e^{-\tau(t)-\tau(t')} \int^t \tilde{\phi}(t''')\frac{g(t''')}{\sqrt{\kappa}} dt''' \right |^2 
 \end{align}
+
+Note, we haven't shown how the $\sigma(0) \sigma^\dagger(0)$ term vanishes, but using the communtator properties, you can show that in this case you can simply replace this term with unity.
 
 This is a completely general equation, as we have not assumed anything about the shape of the incoming field. 
 To simply this equation however, we can make the assumption that the incoming field meets the optimal condition discussed
@@ -170,8 +135,55 @@ If use the condition that $\eta=0.5$, then $\tau(t') = \textrm{ln}(\sqrt{2})$. I
 \left | \langle \psi_{11} | \Phi \rangle \right | ^2 = \int^{t'} dt \left| \sqrt{\frac{2}{\kappa}} g(t) e^{-\tau(t)} \left ( e^{\textrm{ln}(\sqrt{2})} -2 \frac{1}{e^{\textrm{ln}({\sqrt{2}})}} \right ) \right|^2 = 0 
 \end{align}
 
-This shows that there is zero chance to measure a photon in the reserviour field and an atomic excitation when the quantum is oppurtating at $50\%$ efficieny. This is precisely what is expected for a beam-splitted.
+This shows that there is zero chance to measure a photon in the reserviour field and an atomic excitation when the quantum is oppurtating at $50\%$ efficieny. This is precisely what is expected for a beam-splitter.
 
+
+\section{ $| \psi_{20} \rangle$}
+Next, we deal with the case term that measures the amplitude of obtaining a double excitation in the atomic ensemble.
+\begin{align}
+\langle \phi_{20}| \Psi \rangle &=\langle 0 |\frac{1}{\sqrt{2}} \sigma \sigma | \Psi \rangle\\
+\langle \phi_{20}| \Psi \rangle &=\langle 0 | \frac{1}{\sqrt{2}} \sigma \sigma 
+\sigma(t=0)^\dagger \int d\omega \psi(w) E_0^\dagger(w) | 0 \rangle
+\end{align}
+
+and the heisenburg equations for the operators $E_\textrm{out}$ and $\sigma$ are:
+\begin{equation}
+E_\textrm{out}(t) = E_\textrm{in}(t) + i \sqrt{\frac{2}{\kappa}} g(t) \sigma(t) \\
+\sigma(t) = \sigma(0) e^{-\tau} + i\sqrt{2} e^{-\tau} \int^\tau_w d t' e^\tau E_\textrm{in}(t) \frac{g(t)}{\sqrt{\kappa}}
+\end{equation}
+Where $\tau = \int^t dt g^2(t)/\kappa$, $g(t)$ is a time-dependant coupling between the atomic ensemble and the cavity field, and $\kappa$ is the decay rate of the cavity. Inserting these equations we obtain:
+\begin{multline}
+\langle \phi_{20}| \Psi \rangle =\langle 0 | \frac{1}{\sqrt{2}} \left (  \sigma(0) e^{-\tau} + i\sqrt{2} e^{-\tau} \int^\tau_w d t' e^\tau E_\textrm{in}(t) \frac{g(t)}{\sqrt{\kappa}} \right )\\ \left ( \sigma(0) e^{-\tau} + i\sqrt{2} e^{-\tau} \int^\tau_w d t' e^\tau E_\textrm{in}(t) \frac{g(t)}{\sqrt{\kappa}} \right ) \sigma(t=0)^\dagger \int d\omega \psi(w) E_0^\dagger(w) | 0 \rangle
+\end{multline}
+As shown before, we know the following relation,
+\begin{equation}
+E_\textrm{in} \int dw' \phi(\omega') E_0^\dagger(\omega') = \mathscr{F}[\phi(\omega)]
+\end{equation}
+
+And we know that the only terms that will survive in $\langle \phi |$ must contain $E_\textrm{in}(t) sigma(t)$. This leaves the following expansion:
+\begin{align}
+\langle \psi_{20}| \Psi \rangle &= 2 i e^{-2\tau} \sigma(0) 
+\int^{\tau'} E_{in}(\tau') \frac{g(\tau')}{\sqrt{\kappa}} e^{\tau'} \sigma^\dagger(0) \int dw' E_0(\omega') \psi(\omega')\\ 
+&= 2 i e^{-2 \tau} \int d \tau' e^{\tau'} 
+ \mathscr{F}(\psi(\omega)) \frac{\sqrt{\kappa}}{g(\tau')}
+\end{align}
+
+Now, we can also make a simplifying assumption, by noting that the optimal read-in condition is met when $\mathscr{F}(\psi(\omega)) = \sqrt{\frac{2}{\kappa}} g(t) e^{\tau(t)}$ and under this condition is met, the above equation reduces to:
+\begin{align}
+\langle \psi_{20}| \Psi \rangle & = 2\sqrt{2} i e^{-2\tau} \int d \tau' e^{2 \tau} \\
+& = \sqrt{2} i\left(1- e^{-2\tau}\right)
+\end{align}
+
+Also, as previously shown, we know that $\tau$ is equal to $\tau_w = \ln{\sqrt{2}}$, so we can evaluate the above equation to obtain:
+\begin{align}
+\langle \psi_{20}| \Psi \rangle &= \sqrt{2} i \frac{1}{2} \\
+&= \frac{i}{\sqrt{2}}
+\end{align}
+
+Now, to obtain the probability, we square this to obtain:
+\begin{equation}
+| \langle \psi_{20}| \Psi \rangle | ^2 = \frac{1}{2}
+\end{equation}
 \section{$| \psi_{02} \rangle $}
 
 We could invoke a conservation of probability to show that since this is the only other state that is possible in the double excitation space, it must have probability $1/2$, however it is good to do the calculations out to double check.
@@ -179,7 +191,7 @@ We could invoke a conservation of probability to show that since this is the onl
 The quantity that we are interested in is the probability of measuring a double excitation in the reserviour field:
 
 \begin{align}
-|\langle \psi_{02} | \Psi \rangle |^2 =\int dt \int dt' \left | \langle 0 | E_\textrm{out}(t) E_\textrm{out}(t') \sigma^\dagger(0) \int d \omega \phi(\omega) E_0(\omega) | 0 \rangle \right |^2
+|\langle \psi_{02} | \Psi \rangle |^2 =\int dt \int dt' \left | \langle 0 |\frac{1}{\sqrt{2}} E_\textrm{out}(t) E_\textrm{out}(t') \sigma^\dagger(0) \int d \omega \phi(\omega) E_0(\omega) | 0 \rangle \right |^2
 \end{align}
 
 Using the equations for $E_\textrm{out}(t)$, this becomes:
