@@ -32,21 +32,21 @@ The heisenburg state we prepared for photon bunching is:
 Where $E_0(\omega)$ is the creation operator of a photon of frequency $\omega$, $\psi(\omega)$ is the single-photon envelope in frequency space, and $\sigma_\textrm{z}(t=0)$ is the initial creation operator of a atomic excitation. In what follows, we will be assuming that a photon is already stored in the memory at $t=0$, and that another pulse is incident.
 
 The three terms we are concered with are:
-\begin{equation}
-\langle \phi_{20}| \Psi \rangle =\langle 0 | \sigma_\textrm{z} \sigma_\textrm{z} | \Psi \rangle
-\langle \phi_{11} | \Psi \rangle =\langle 0 | \sigma_\textrm{z} \int dt E_out(t) | \Psi \rangle
-\langle \phi_{02} | \Psi \rangle = \langle 0 | \int dt \int dt' E_\textrm{out}(t) E_\textrm{out}(t') | \Psi \rangle
-\end{equation}
+\begin{align}
+\langle \psi_{20}| \Psi \rangle &=\langle 0 | \sigma_\textrm{z} \sigma_\textrm{z} | \Psi \rangle\\
+\langle \psi_{11} | \Psi \rangle& =\langle 0 | \sigma_\textrm{z} \int dt E_out(t) | \Psi \rangle\\
+\langle \psi_{02} | \Psi \rangle &= \langle 0 | \int dt \int dt' E_\textrm{out}(t) E_\textrm{out}(t') | \Psi \rangle
+\end{align}
 
-Where $| phi_{20}$ is a double excitation in the photon field, $| \phi{11} \rangle $ is photon and an atomic excitation, and $ | \phi_{02} \rangle $ is a double atomic excitation. 
+Where $| \psi_{20}$ is a double excitation in the photon field, $| \psi_{11} \rangle $ is photon and an atomic excitation, and $ | \psi_{02} \rangle $ is a double atomic excitation. 
 
 \section{ $| \psi_{20} \rangle$}
 
-\begin{equation}
-\langle \phi_{20}| \Psi \rangle =\langle 0 | \sigma_\textrm{z} \sigma_\textrm{z} | \Psi \rangle
-\langle \phi_{20}| \Psi \rangle =\langle 0 | \sigma_\textrm{z} \sigma_\textrm{z} 
+\begin{align}
+\langle \phi_{20}| \Psi \rangle &=\langle 0 | \sigma_\textrm{z} \sigma_\textrm{z} | \Psi \rangle\\
+\langle \phi_{20}| \Psi \rangle &=\langle 0 | \sigma_\textrm{z} \sigma_\textrm{z} 
 \sigma_\textrm{z}(t=0)^\dagger \int d\omega \psi(w) E_0^\dagger(w) | 0 \rangle
-\end{equation}
+\end{align}
 
 and the heisenburg equations for the operators $E_\textrm{out}$ and $\sigma_\textrm{z}$ are:
 \begin{equation}
@@ -63,27 +63,27 @@ We know that $E_\textrm{in}$ is the input-pulse, and can also be defined in freq
 E_\textrm{in} \int dw' \phi(\omega') E_0^\dagger(\omega') = \mathscr{F}[\phi(\omega)]
 \end{equation}
 
-And we know that the only terms that will survive in $\langle \phi |$ must contain $E_in(t) sigma(t)$. This leaves the following expansion:
-%\begin{align}
-%\langle \phi_{20}| \Psi \rangle &= 2^{\frac{3}{2}} i e^{-2\tau} \sigma(0) 
-%int^\tau' E_{in}(\tau') \frac{g(\tau')}{\sqrt{\kappa}} e^{w\tau'} \sigma^\dagger(0) \int dw' E_0(\omega') \psi(\omega')\\
-%\end{align}
-%&= 2^{\frac{3}{2} i e^{-2 \tau} \int d \tau' e^{\tau'} \chi(\tau')
-%\end{align}
-where $\chi(\tau') = \mathscr{F}(\psi(\omega)) \frac{\sqrt{\kappa}}{g(\tau')}$
+And we know that the only terms that will survive in $\langle \phi |$ must contain $E_\textrm{in}(t) sigma(t)$. This leaves the following expansion:
+\begin{align}
+\langle \psi_{20}| \Psi \rangle &= 2^{\frac{3}{2}} i e^{-2\tau} \sigma(0) 
+\int^{\tau'} E_{in}(\tau') \frac{g(\tau')}{\sqrt{\kappa}} e^{\tau'} \sigma^\dagger(0) \int dw' E_0(\omega') \psi(\omega')\\ 
+&= 2^{\frac{3}{2}} i e^{-2 \tau} \int d \tau' e^{\tau'} 
+ \mathscr{F}(\psi(\omega)) \frac{\sqrt{\kappa}}{g(\tau')}
+\end{align}
 
 Now, we can also make a simplifying assumption, by noting that the optimal read-in condition is met when $\mathscr{F}(\psi(\omega)) = \sqrt{\frac{2}{\kappa}} g(t) e^{\tau(t)}$ and under this condition is met, the above equation reduces to:
 \begin{align}
-\langle \phi_{20}| \Psi \rangle & = 2^{\frac{3}{2}} i e^{-2\tau} \int d \tau' e^{2 \tau} \\
-& = 2^{\frac{3}{2}} i\left(1- exp{-2\tau}\right)
+\langle \psi_{20}| \Psi \rangle & = 4 i e^{-2\tau} \int d \tau' e^{2 \tau} \\
+& = 2 i\left(1- e^{-2\tau}\right)
 \end{align}
 
-And to be in the 50-50 beamsplitter regime, we know that this has to be equatl to i$\frac{1}{\sqrt{2}}$, so we can solve for $\tau$ for this to be true. In fact, it can be seen that if $\tau = ln(\sqrt(2)$ then the above equation reduces to:
+Also, as previously shown, we know that $\tau$ is equal to $\tau_w = \ln{\sqrt{2}}$, so we can evaluate the above equation to obtain:
 \begin{align}
-\langle \phi_{20}| \Psi \rangle &= 2^{\frac{3}{2}} i \frac{1}{2} \\
-&= \frac{1}{\sqrt{2}}
+\langle \psi_{20}| \Psi \rangle &= 2 i \frac{1}{2} \\
+&= 1
 \end{align}
-
+The problem is that the intial state needs to be normalized, so it will have
+a factor of $1/\sqrt{2}$ that will delightfully give us what we need!
 \section{$| \psi_{11} \rangle$}
 Now, we can look at the term where there is an excitation in the field, and in the atomic memory.
 
