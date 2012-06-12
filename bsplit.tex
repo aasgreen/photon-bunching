@@ -34,11 +34,11 @@ The heisenburg state we prepared for photon bunching is:
 Where $E_0(\omega)$ is the creation operator of a photon of frequency $\omega$, $\psi(\omega)$ is the single-photon envelope in frequency space, and $\sigma_\textrm{z}(t=0)$ is the initial creation operator of a atomic excitation. In what follows, we will be assuming that a photon is already stored in the memory at $t=0$, and that another pulse is incident.
 
 The three terms we are concered with are:
-\begin{equation}
-\langle \phi_{20}| \Psi \rangle =\langle 0 | \sigma_\textrm{z} \sigma_\textrm{z} | \Psi \rangle
-\langle \phi_{11} | \Psi \rangle =\langle 0 | \sigma_\textrm{z} \int dt E_out(t) | \Psi \rangle
-\langle \phi_{02} | \Psi \rangle = \langle 0 | \int dt \int dt' E_\textrm{out}(t) E_\textrm{out}(t') | \Psi \rangle
-\end{equation}
+\begin{align}
+\left| \langle \phi_{20}| \Psi \rangle\right|^2 &= \left|\langle 0 | \sigma_\textrm{z} \sigma_\textrm{z} | \Psi \rangle \right|^2\\
+\left |\langle \phi_{11} | \Psi \rangle \right|^2 &= \int dt \left|\langle 0 | \sigma(t')  E_out(t) | \Psi \rangle \right|^2\\
+\left |\langle \phi_{02} | \Psi \rangle\right|^2 &= \int dt \int dt'\left| \langle 0 |  E_\textrm{out}(t) E_\textrm{out}(t') | \Psi \rangle \right |^2
+\end{align}
 
 Where $| phi_{20}$ is a double excitation in the photon field, $| \phi{11} \rangle $ is photon and an atomic excitation, and $ | \phi_{02} \rangle $ is a double atomic excitation. 
 
@@ -51,10 +51,10 @@ Where $| phi_{20}$ is a double excitation in the photon field, $| \phi{11} \rang
 \end{equation}
 
 and the heisenburg equations for the operators $E_\textrm{out}$ and $\sigma_\textrm{z}$ are:
-\begin{equation}
-E_\textrm{out}(t) = E_\textrm{in}(t) + i \sqrt{\frac{2}{\kappa}} g(t) \sigma(t)
-\sigma(t) = \sigma(0) e^{-\tau} + i\sqrt{2} e^{-\tau} \int^\tau_w d t' e^\tau E_\textrm{in}(t) \frac{g(t)}{\sqrt{\kappa}}
-\end{equation}
+\begin{align}
+E_\textrm{out}(t) &= E_\textrm{in}(t) + i \sqrt{\frac{2}{\kappa}} g(t) \sigma(t)\\
+\sigma(t) &= \sigma(0) e^{-\tau} + i\sqrt{2} e^{-\tau} \int^\tau_w d t' e^\tau E_\textrm{in}(t) \frac{g(t)}{\sqrt{\kappa}}
+\end{align}
 Where $\tau = \int^t dt g^2(t)/\kappa$, $g(t)$ is a time-dependant coupling between the atomic ensemble and the cavity field, and $\kappa$ is the decay rate of the cavity. Inserting these equations we obtain:
 \begin{multline}
 \langle \phi_{20}| \Psi \rangle =\langle 0 | \left (  \sigma(0) e^{-\tau} + i\sqrt{2} e^{-\tau} \int^\tau_w d t' e^\tau E_\textrm{in}(t) \frac{g(t)}{\sqrt{\kappa}} \right )\\ \left ( \sigma(0) e^{-\tau} + i\sqrt{2} e^{-\tau} \int^\tau_w d t' e^\tau E_\textrm{in}(t) \frac{g(t)}{\sqrt{\kappa}} \right ) \sigma_\textrm{z}(t=0)^\dagger \int d\omega \psi(w) E_0^\dagger(w) | 0 \rangle
