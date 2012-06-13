@@ -252,5 +252,36 @@ The following graph highlights the recent interpration problem I have found.
 \caption{This illustrates the problem. The functions $| \langle \psi_{11}|\Psi\rangle|^2$ and $\langle \psi_{20}|\Psi\rangle|^2$ are plotted. Note:$\langle \psi_{20}|\Psi\rangle|^2=\langle \psi_{02}|\Psi\rangle|^2$. As calculated, the probability adds up to one for $\tau_w = \ln(\sqrt{2})$ but no other. \label{levels}}
 \end{figure}
 
+\subsection{Solution}
+
+So, I have fixed the problem. What was happening was that the initial field I was working
+with was unnormalized. 
+
+If I define the field to be $\tilde{\phi}(t)=\sqrt{\frac{2}{\kappa}}g(t)e^{\tau}$, then
+
+\begin{equation}
+\int^\infty dt |\tilde{\phi}(t)=\sqrt{\frac{2}{\kappa}}g(t)e^{\tau}|^2 =1
+\end{equation}
+
+But we can see from evaluating this integral that:
+\begin{align}
+\int^\infty dt |\tilde{\phi}(t)=\sqrt{\frac{2}{\kappa}}g(t)e^{\tau}|^2 &=1
+\int^infty dt |\tilde{\phi}(t)=\sqrt{\frac{2}{\kappa}}g(t)e^{\tau}|^2 &=e^{2\tau}-1 i\neq 1\end{align}
+
+So, I actually needed to define the field as 
+
+\begin{equation}
+\tilde{\phi}(t)=\frac{\sqrt{\frac{2}{\kappa}}g(t)e^{\tau}}{e^{2\tau}-1}
+\end{equation}
+
+This ensures that the wave-packet sums to one over all time. When I use this
+condition, I get the following graph:
+\begin{figure}
+\epsfig{file=goodgraph.eps,width=1. \columnwidth}
+\caption{The function prob-check sums up all the probabilites. Note: the function psi20norm is equal to psi02norm, so I only show one of them. Also psi20norm is the normalize function $|\langle \psi_20 | \Psi \rangle|^2$}
+
+\end{figure}
+
+I will include the normalization in the derivation in the next draft of these notes.
 
 \end{document}
