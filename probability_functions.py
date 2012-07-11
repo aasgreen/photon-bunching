@@ -1,9 +1,14 @@
-#this is a list of the probability functions for the beamsplitter
+#
+#his is a list of the probability functions for the beamsplitter
 
-import math
-
+import math as math
+from scipy import integrate
 import matplotlib.pyplot as plt
 
+math.exp(2)
+def Eout(t, Ein,eta):
+	out = Ein(t)**2/(integrate.quad(lambda x: eta * Ein(x)**2,0,t)[0]+1)**2
+	return sqrt(out)
 def normalize(tau):
 	if tau == 0.:
 		return 1
@@ -39,6 +44,8 @@ def exptest(t):
 	data = math.exp(3)
 	return data
 
+def ef(tau):
+	return (1-math.exp(-2*tau))
 def prob_check (t):
 	return psi11norm(t)+psi20norm(t)+psi02norm(t)
 
@@ -53,3 +60,15 @@ def plot_prob(funcList, ylim):
 	plt.ylim([0,3])
 	return 0
 		
+
+def plot_prob_bs(funcList, ylim):
+	yList = [i/500.*ylim for i in range(500)]
+	plt.cla()
+	for func in funcList:
+		plt.plot(map(ef,yList), map(func, yList),label=str(func) )
+	plt.legend()
+	plt.xlabel('Efficiency')
+	plt.ylabel('Probability')
+	plt.ylim([0,1])
+	return 0
+	

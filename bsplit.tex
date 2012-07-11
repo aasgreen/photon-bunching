@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage{amssymb, amsmath, hyperref}
 \DeclareMathAlphabet{\mathscr}{OT1}{pzc}{m}{it}
-\usepackage{epsfig, graphicx}
+\usepackage{epsfig,float, setspace, graphicx, setspace, wrapfig, subfig}
 \usepackage{verbatim}
 \usepackage{fullpage,setspace}
 \title{Photon-Bunching in Quantum Memory}
@@ -197,14 +197,15 @@ Now, we can also make a simplifying assumption, by noting that the optimal read-
 & =A \sqrt{2} i\left(1- e^{-2\tau}\right)
 \end{align}
 With the probability equal to:
-\begin{equation}
+\begin{align}
 \label{p20}
-|\langle \psi_{20}| \Psi \rangle|^2=|A 2\sqrt{2} i e^{-2\tau} \int d \tau' e^{2 \tau}|^2 
-\end{equation}
-Also, as previously shown, we know that $\tau$ is equal to $\tau_w = \ln{\sqrt{2}}$, so we can evaluate the above equation to obtain:
+|\langle \psi_{20}| \Psi \rangle|^2 &=|A 2\sqrt{2} i e^{-2\tau} \int d \tau' e^{2 \tau'}|^2 \\
+&= |A  \sqrt{2} i (1-e^{-2\tau_w})|^2
+\end{align}
+Also, as previously shown, we know that $\tau_w$ is equal to $\tau(\infty) = \ln{\sqrt{2}}$, so we can evaluate the above equation to obtain:
 \begin{align}
 |\langle \psi_{20}| \Psi \rangle|^2 &= |\sqrt{2} i \frac{1}{2}|^2 \\
-&= \frac{i}{2}
+&= \frac{1}{2}
 \end{align}
 
 \section{$| \psi_{02} \rangle $}
@@ -273,7 +274,7 @@ Now, if we require that $\tau_w = \textrm{ln}(\sqrt{2})$, this further reduces t
 We have shown that the CD memory behaves like a beamsplitter under the very specific condition that $\eta = 1/2$, however, this suggests that there may be some mapping whereupon the equations that describe the CD memory are exactly mapped to the equations that describe a beamsplitter. 
 
 First, if we plot Equations \eqref{p11},\eqref{p02},\eqref{p20} (taking into account that the normalization factor $A$ is dependant on $tau(t=\infty)$), then we obtain the following graph:
-\begin{figure}
+\begin{figure}[H]
 \epsfig{file=goodgraph.eps,width=1. \columnwidth}
 \caption{The function prob-check sums up all the probabilites. Note: the function psi20norm is equal to psi02norm, so I only show one of them. Also psi20norm is the normalize function $|\langle \psi_20 | \Psi \rangle|^2$}
 
@@ -299,19 +300,86 @@ Now, if we find the probability of a state $\rangle psi_{20} | =\frac{1}{\sqrt{2
 \langle \psi_{20}|\Psi_{11} \rangle = \sqrt{2} \cos |\theta| \sin |\theta|
 \end{align}
 
-However, using the equation for the Reflection coefficient: 
-$R = \sin|\theta|$, we can recast this equation into:
+However, using the equation for the transmission coefficient: 
+$R = \cos|\theta|$, we can recast this equation into:
 
 \begin{align}
-\langle \psi_{20}|\Psi_{11} \rangle = \sqrt{2}  R(\sqrt(1-R)
+\langle \psi_{20}|\Psi_{11} \rangle = \sqrt{2}  T(\sqrt(1-T^2)
 \end{align}
-
+Square to get probability:
+\begin{equation}
+|\langle \psi_{20} | \Psi_{11} \rangle |^2 = T^2 (1-T^2) 
+\end{equation}
 And using a similar treatment, we can render the equation for the amplitude of a state:
 \begin{align}
 \langle \psi_{11} | \Psi_{11} \rangle &= \langle 0 | a^\dagger_{out}b^\dagger_{out} a^\dagger b^\dagger |0\rangle\\
 &= \cos^2|\theta| - \sin^2|\theta|\\
-&= 1-2R^2
+&= -1+2T^2
 \end{align}
 
+and then square to get the probability:
+\begin{equation}
+|\langle \psi_{11} | \Psi_{11} \rangle |^2 = |-1+2T^2|^2 
+\end{equation}
 If we graph these equations, we can see that they are equalivent to the graph of the CD memory equations that were plotted as a function of the effiency.
+
+\subsection{Mapping of CD to Beamsplitter}
+
+If we take the equations derived that describe the dynamics of the CD-Memory in
+the beamsplitter regime, Eqs. \eqref{p11},\eqref{p02},\eqref{p20}
+and rewrite them in terms of the efficiency, $\eta$, we can see a full analytical
+mapping between the equations for beamsplitters and the equations for CD.
+
+Starting with a double excitation equation:
+\begin{equation}
+|\langle \psi_{20}| \Psi \rangle|^2=|A \sqrt{2} i(1- e^{-2\tau(\infty)})
+\end{equation}
+
+We also know that the efficiency $\eta$, is equal to:
+\begin{equation}
+\eta = 1-e^{-2\tau(\infty)}
+\end{equation}
+Additionally, we know that our normalization constant, A is:
+\begin{equation}
+A = \sqrt{\frac{1}{\left(  e^{2\tau(\infty)} -1\right)}}
+\end{equation}
+
+And this can be rewritten in terms of $eta$ in the following way:
+\begin{align}
+A &= \sqrt{\frac{e^{-2\tau(\infty)}}{1-e^{-2\tau(\infty)}}}\\
+A &=\sqrt{ \frac{1-\eta}{\eta}}
+\end{align}
+
+And rewriting Eq~\eqref{p20} in the same we, we obtain:
+\begin{align}
+|\langle \psi_{20}| \Psi \rangle|^2&= |A  \sqrt{2} i (1-e^{-2\tau})|^2\\
+&=| \sqrt{\frac{1-\eta}{\eta}} \sqrt{2} \eta|^2\\ 
+&= |  \sqrt{2} i \sqrt{ \eta (1-\eta)}|^2
+\end{align}
+
+We make the connection between the transmission coefficient and the efficieny by noting that:
+\[
+T^2 = \eta
+\]
+as $T^2$ will deal with the intensity of the classical field going through the beamsplitter, which is the analogy of how much of the atomic (photon) field is converted into the photon (atomic)-- the efficiency.
+
+Thus, the equation becomes:
+\[
+|\langle \psi_{20} | \Psi \rangle|^2 = | \sqrt{2} T\sqrt{1-T^2}
+\]
+which, as we have shown earlier is the beamsplitter equation, exactly.
+
+Similarly, we can show the equivalence between the $\langle \psi_{11} | \Psi \rangle$ states in the beamsplitter picture and the CD memory.
+\begin{align}
+\left | \langle \psi_{11} | \Phi \rangle \right | ^2  &= A^2\int^{t'} dt \left|\sqrt{\frac{2}{\kappa}} g(t) e^{-\tau(t)} \left (- e^{\tau(t')} +2 e^{-\tau(t')} \right ) \right |^2 \\
+&= \frac{e^{-2\tau_w}}{1-e^{-2\tau_w}} \left (1- e^{-2\tau_w} \right ) \left ( e^{tau_w}-2e^{-\tau_w} \right )^2\\
+&=  \left( 1-2e^{-2\tau_w} \right )^2
+&= \left ( -1+2*eta \right )^2
+&= \left (-1+2*T^2 \right )^2
+\end{align}
+
+\section{Conclusion}
+I have shown full analytical equivalence between the CD-memory in the two photon regime, and a beam-splitter.
 \end{document}
+
+
