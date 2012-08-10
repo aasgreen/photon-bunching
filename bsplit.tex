@@ -387,7 +387,210 @@ Similarly, we can show the equivalence between the $\langle \psi_{11} | \Psi \ra
 &= \left (-1+2*T^2 \right )^2
 \end{align}
 
+\section{AFC}
+
+The afc memory has some differences from the CD-Memory, but it is also equivalent to a beamsplitter. Instead of the two channels being a memory storage and an emitted photon, you can think of the two channels as being two photons, but time delayed.
+
+The section is laid out as follows:
+\begin{description}
+\item[ Section \ref{eqmot}]: I lay out the equations of motion
+\item[ Section \ref{description}]: A high-level description of what is happening
+\item [Section \ref{eqderv}]: A walk through of the calculations for the beamsplitting process.
+\item [Section \ref{general}]: A presentation of the general case, where I plot the probabilites of the three states as a 
+function of the efficiency/
+\end{description}
+
+\subsection{Equations of Motion}
+\label{eqmot}
+The equations of motion for the AFC memory in a cavity are:
+\begin{align}
+\dot{\sigma}_\omega (t) &= -i \omega \sigma - \gamma_h \sigma + i P E \\
+\dot{E} (t) & = -\kappa E +\sqrt{2 \kappa} E_{in} + i \tilde{P} \int d \omega n(\omega) \sigma_\omega \\
+E_{out} &= -E_{in} + \sqrt{2 \kappa} E
+\end{align}
+
+We can easily solve the equation for sigma, and then inserting it into the equation for
+the cavity field. If we additionaly make the leaky cavity assumption, we can set $\dot{E} = 0$, and
+and we have a solution for E, given by:
+\begin{equation}
+0 = -\kappa E +\sqrt{2 \kappa} E_{in} + i P \tilde{P} \int dt' \tilde{n} (t-t') E(t')
+\end{equation}
+
+You can see the AFC paper for more details, but because of the nature of the frequency
+comb, the function $\tilde{n}(t-t')$ can be approximated by a chain of delta functions,
+which are spaced apart by $\frac{2 \pi}{\Delta}$ in time.
+
+Because of this, we can solve for local solutions for $E$ around peaks in the comb. In fact,
+because the integral is over all time, we need to use a recursive strategy to solve
+for the $E$ field at later times. This is because the $E$ field at some time $t \approx n\frac{2\pi}{\Delta}$ will depend
+	on every previous $E$ field, due to the integral term $ i P\tilde{P} \int^t_{-\infty} \tilde{n}(t-t') E(t') d t'$
+
+
+\subsection{High-Level}
+\label{description}
+The protocol works in the following way. There is an AFC memory in a cavity. The cavity has a decay rate of $\kappa$ that can be changed somehow. There is a pulse of light sent in with a time-envelope of $\Theta(t)$, such that is incident
+upon the cavity at around $t~0$. Because of assumptions made in the AFC cavity protocol, the incident light pulse will
+overlap with a narrow gaussian function, that can be approximated as a delta function. We additionally assume that the
+impedence matching condition is on, such that $\kappa = \Gamma$, where $\Gamma$ is the absorption rate for the atoms within the gaussian spectral density. It has been shown that this can result in arbitrary close to unity efficiency. 
+
+This means that there is one pulse now stored in the medium. Each 'tooth', or narrow gaussian function within the atomic
+frequency comb will gain phase at different rates. However, because of the periodicity of the comb, each 'tooth' will
+be in phase at $t = \frac{2 \pi}{\Delta}$. This means that the AFC is primed to re-emit at that time. 
+
+However, right when the AFC is going to re-emit, we send in a second pulse of light, with time-envelope $\Phi$. Additionally, we change the cavity decay rate $\kappa$, such that the emission efficiency is $50\%$. This results in an interference
+effect that I will show results in a $\frac{1}{2}$ probability of seeing two photons at that time.
+
+If, however, we don't observe the photons at that time, we know that they must have both been stored in the cavity. We wait an additional rephasing has occured at time $t = \frac{4\pi}{\Delta}$ time, and change the emission efficiency back to $100\%$ by setting $\kappa = \Gamma$. In this way, we 'flush out' the memory. The equations show that there is a $\frac{1}{2}$ chance of seeing two photons there.
+
+Additionally, I will also show that there is a zero chance of first seeing a photon at $t = \frac{2 \pi}{\Delta}$ and then seeing an additional photon at time $t = \frac{4 \pi}{\Delta}$.
+
+A rough equivalence can be made to a physical beam splitter system, with two channels $a$ and $b$. If we have a time delay setup for any photons coming out in channel $b$, such that we introduce a delay of $\frac{2 \pi}{\Delta}$, and then
+we recombine the photons. If we have a photon detector set-up, we will still be able to see photon bunching. There will be a 1/2 chance of seeing two photons in channel $a$, which will arrive at the photon detector at some time $t_1$. There will also be a 1/2 chance of seeing two photons in channel $b$, which will arrive later at some time $t_1+\frac{2 \pi}{\Delta}$. 
+\subsection{AFC Photon Bunching}
+This subsection is laid out as follows. I will first define the initial state, as there are some sublities involved. Then, I will prove that the initial state will only allow certain terms in any expansion of the oppurators of interest. Then, I will show the equations for each of the three states:
+\begin{enumerate}
+\item | $\langle \psi_{20} | \Psi \rangle |^2$, two photons detected around $t~\frac{2\pi}{\Deta}$
+\item $ | \langle \psi_{02} | \Psi \rangle |^2 $, two photons detected around $t ~\frac{4 \pi}{\Delta}$
+\item $ | \langle \psi_{11} |\Psi \rangle |^2 $, one photon detected around $t~\frac{2\pi}{\Delta}$ and one photon 
+detected around $t~\frac{4\pi}{\Delta}$
+
+\subsubsection{Initial State}
+Note: This is a pedantic section, and it is fairly dull. You can skip over it, as it isn't that important. I just define the initial state, and then show a couple of specific results that I will reference later.
+
+We first have to define the initial state. As previously laid out in the overview, we have two photons, one coming in
+after the other, with time envelopes $\Theta$ and $\Phi$, respectively. Additionally, the two pulses are seperated by a time $\frac{2 \pi}{\Delta}$. I believe that we can define our initial state like:
+
+\begin{align}
+| \Psi \rangle &= \int d t' \int dt \Theta(t') E^\dagger_{in}(t') \Phi (t) E^\dagger_{in}(t)
+\end{align}
+
+Because the two pulses are far apart, we don't need to include a normalization factor of $\frac{1}{\sqrt{2}}$.
+
+$E^\dagger_{in}(t)$ will create a photon incident on the cavity at some time $t$. The probability of this is weighted by
+the envelope function, $\Theta$ or $\Phi$.
+
+If we try to find the probability of seeing two photons exiting the cavity at some time $t$, we find the overlap between the two states:
+
+\begin{equation}
+| \rangle 0 | \frac{1}{sqrt{2}} E_{out}(t) E_{out}(t') |Psi |rangle |^2
+\end{equation}
+
+where $E_out$ is a heisenburg operator.
+
+I am going to use a simplified equation for $E_{out}$ in order to prove that only cross terms will survive the expansion. This also lets me elaborate on the notation.
+
+Assume that $E_{out}i(t) = a E_in(t) + b E_in(t-\frac{2\pi}{\Delta})$. 
+
+Then, our probability for seeing two photons is at some time $t$ and $t'$:
+\begin{align}
+P2 = | \rangle 0 | \frac{1}{sqrt{2}} i(a^2 E_{in}(t) E_{in}(t') + b^2 E_in(t-\frac{2\pi}{\Delta}) E_in(t'-\frac{2\pi}{\Delta}) + ab E_{in}(t)E_in(t'-\frac{2\pi}{\Delta}) + abE_in(t-\frac{2\pi}{\Delta})E_{in}(t) ) |\Psi \rangle |^2 
+\end{align}
+
+If we look at the $a^2$ term, we can see that it won't survive when applied to the initial state.
+
+\begin{align}
+P2_1 =\langle 0 | a^2E_{in}(t) E_{in}(t') \int d t' \int dt \Theta (t') E^\dagger_{in}(t'') \Phi (t) E^\dagger_{in}(t''') | 0\rangle
+\end{align}
+
+Earlier, when the input-output equations were derived, there was a communtation relation, defined as:
+\[
+[E_{in}(t), E^dagger_{in}(t')] = \delta(t-t')
+\]
+
+Now, we know that any creation operator acting on a vacuum state like $\langle 0 | a^\dagger = 0$, so we can use
+the commutation relations to 'shuffle' a creation operator to the very left, where it will destroy the vacuum. 
+
+Therefore, P2 becomes:
+\begin{align}
+P2_1 &=  \langle 0 |\int dt'' \int dt'''\Theta(t'')\Phi(t''') a^2 E_{in}(t)(E^\dagger_{in}(t'')E_{in}(t') +\delta(t'-t'') ) E\dagger_{in}(t''') |0|rangle\\
+& = \langle 0 | \int dt'' \int dt''' \Theta(t'') \Phi(t''') a^2 (E^\dagger_{in}(t'')E_{in}(t)+\delta(t-t''))E_{in}(t')E\dagger_{in}(t''')
++ E_{in}(t)\delta(t'-t'')E^\dagger_{in}(t''') \\
+&= \langle 0 |\int dt'' \int dt''' \Theta(t'') \Phi(t''') a^2 ( 0 + \delta(t-t'') (E^\dagger_{in}(t''')E_{in}(t') + \delta(t'-t''') ) + E_{in}(t)\delta(t'-t'')E^\dagger_{in}(t''')|0\rangle
+&= \int dt'' \int dt'''\Theta(t'')\Phi(t''') a^2(\delta(t-t'')\delta(t'-t''')+\delta(t'-t'')\delta(t-t''')
+&= a^2\Theta(t)\Phi(t')+a^2\Theta(t')\Phi(t)
+\end{align}
+
+So, in order to be more general, we would integrate this term over the local time of one of the teeth. More specifically, we would integrate this probability equation all over the areas where the equation is valid-- this is constrained to times $t~\frac{2 \pi}{\Delta}$. However, because we are integrating both $t$ and $t'$ at around the same values, the P2_1 term is zero, as we know that there is a time delay between both pulses. This is a subtle point, and I am not explaining it well. In order for the P2_1 term to have been valid, it would have needed something like:
+\begin{align}
+P2_1 = a^2 \Theta(t-\frac{2\pi}{\Delta})\Phi(t') +a^2\Theta(t'-\frac{2\pi}{\Delta})\Phi(t)
+\end{align}
+
+So that even though \Theta and \Phi don't overlap, the above function will evaluate to some non-zero. This only comes through in the cross terms.
+
+In my future calculations, I will take it as given that we can drop the $a^2$ and the $b^2$ terms. Ie, everything but the cross terms.
+
+\subsubsection{The Three States}
+\label{sec:three}
+In order to calculate the evolution of the states of interest, we first need to mathematically define our states of interest:
+\begin{align}
+\label{eq:p20}
+P20(t,t') = | \langle 0 | \frac{1}{\sqrt{2}} E_{out}(t) E_{out}(t') | \Psi \rangle |^2
+\end{align}
+
+where $t~\frac{2\pi}{\Delta}$ and $t' ~\frac{1}{2 \pi}{\Delta}$
+\begin{equation}
+\label{eq:p11}
+P11(t,t') = | \langle 0 | \frac{1}{\sqrt{2}} E_{out}(t) E_{out}(t') | \Psi \rangle |^2
+\end{equation}
+where $t~\frac{2\pi}{\Delta}$ and $t'~\frac{4 \pi}{\Delta}$
+
+\begin{equation}
+\label{eq:p02}
+P02(t,t') = | \langle 0 | \frac{1}{\sqrt{2}} E_{out}(t) E_{out}(t') | \Psi \rangle |^2
+\end{equation}
+where $t~\frac{4\pi}{\Delta}$ and $t'~\frac{4\pi}{\Delta}$
+
+So, the first deals with the probabilty of observing two photons around the neighborhood of $t~\frac{2 \pi}{\Delta}$, the second term deals with first observing a photon in the neighborhood of $t~\frac{2 \pi}{\Delta}$ and then observing a photon in the neighborhood of $t~\frac{4 \pi}{\Delta}$, and the third term deals with observing two photons in the neighborhood
+of $t~\frac{4 \pi}{\Delta}$
+
+\label{eqderv}
+\subsection{Photon Bunching}
+\label{phbnch}
+
+In this section, I will deal with each of the probability terms defined in section \ref{sec:three}, and calculate them out. I will be dealing with the specific condition where the impedence matching condition is perfect for the very first pulse, and then set to 50\% efficiency for the second pulse.
+
+\subsubsection{P20}
+First, we must calculate what the $E_{out}$ operator is during this time. The physical situation is that we have a
+pulse read in with near unit efficiency, but just as it is about to rephase, we send another pulse in. The general equation for $E_{out}$ is:
+\begin{align}
+E_{out} = \sqrt{2\kappa} - E_{in}
+\end{align}
+
+So we must first calculate what the cavity field $E$ is doing. The equation of motion for $E$ is given by:
+
+\begin{align}
+\dot{E} = -\kappa E -iP\tilde{P}\int_{-infty}^t\tilde{n}(t-t')E(t')+\sqrt{2\kappa} E_{in}(t)
+\end{align}
+
+We can divide the integral up into two segments. The first segment $-\infty<t\le0$ is where the first pulse is being read in with unit efficiency. In the impedence matching paper, this condition was already derived, and the equation for $E$ during this time is $E = \frac{1}{\sqrt{2\kappa}}$, with $\kappa = \Gamma$, where $\kappa$ is the cavity decay rate, and $\Gamma$ is the absorption by the atomic frequency comb. However, in order to simplfy the equations that will come later, in the unit efficiency case, I will be rewriting the equations to include $\Gamma$ instead of $\kappa$. I can do this
+because of their equivalence, and it means that I won't have to worry about having different $\kappa$'s. This is because we will be changing the cavity decay rate, so $\kappa$ is not a constant in time. By renaming it to $\Gamma$, it will hopefully make the end equations more managable. So when ever you see a $\kappa$, you can assume it is a cavity decay rate that sets the absorption efficiency to 50\%.
+
+So, the second sequence is when $t'~t$, and in that case, $E(t')$ is just $E(t')$, as it is in the neighborhood of the time
+that we are evaluating at. Broken up this way, the equation becomes
+\begin{align}
+\dot{E} & = -\kappa E -2\Gamma \frac{1}{\sqrt{2\Gamma}}E_{in}(t-\frac{2 \pi}{\Delta}) -\Gamma E(t) +\sqrt{2 \kappa} E_{in}(t)
+\end{align}
+
+Using the usual trick of setting $\dot{E}=0$, we can solve for E:
+\begin{equation}
+E = \frac{\kappa +\Gamma} (\sqrt{2 \Gamma} E_{in}(t-\frac{2 \pi}{\Delta} +\sqrt{2 \kappa}E_{in}(t)
+\end{equation}
+
+So, using this equation in our equation for $E_{out}$, we get:
+
+\begin{align}
+E_{out} &= \frac{\sqrt{2\kappa}}{\kappa+\Gamma} (\sqrt{2 \Gamma} E_{in}(t- \frac{2 \pi}{\Delta} +\sqrt{2\kappa} E_{in}(t)_ - E_{in}(t)\\
+&= \frac{2 \sqrt{\kappa \Gamma}}{\kappa + \Gamma}E_in(t- \frac{2\pi}{\Delta} +\frac{\kappa - \Gamma}{\kappa+\Gamma} E_{in}(t)
+\end{align}
+
+
+
+\subsection{AFC Photon Interference}
+\label{general}
+
+
 \section{Conclusion}
+
 I have shown full analytical equivalence between the CD-memory in the two photon regime, and a beam-splitter.
 \end{document}
 
