@@ -55,9 +55,12 @@ def plot_prob(funcList, ylim):
 	for func in funcList:
 		plt.plot(yList, map(func, yList),label=str(func) )
 	plt.legend()
-	plt.xlabel(r'$\tau$')
+	plt.xlabel('Efficiency')
+#if using tau in yList, then rename to plt.xlabel(r'$\tau')
+	plt.axvline(x=.5, color='black', ls='--')
+	plt.axhline(y=.5, color='black', ls='--')
 	plt.ylabel('Probability')
-	plt.ylim([0,3])
+	plt.ylim([0,1])
 	return 0
 		
 
@@ -70,5 +73,42 @@ def plot_prob_bs(funcList, ylim):
 	plt.xlabel('Efficiency')
 	plt.ylabel('Probability')
 	plt.ylim([0,1])
-	return 0
 	
+	return 0
+
+#New section for the AFC
+#assume that the two pulses overlap completely:
+def afcp20(ef):
+
+	if ef == 0: 
+		p20 = 1.
+	elif ef== 1:
+		p20 = 1.
+	else:
+		alpha =( math.sqrt(1./ef)+1.)/(math.sqrt(1./ef)-1)
+		p20 = 8.*alpha*(alpha-1.)**2/(alpha+1.)**4
+
+	return p20
+
+def afcp02(ef):
+	
+	if ef == 0:
+		p02 =0.
+	elif ef == 1:
+		p02 = 0.
+	else:
+		alpha =( math.sqrt(1./ef)+1.)/(math.sqrt(1./ef)-1)
+		print alpha
+		p02 = 8.*(1.-alpha)**2*alpha/(1.+alpha)/(1.+alpha)/(1.+alpha)/(1.+alpha)
+	return p02
+
+def afcp11(ef):
+
+	if ef ==0:
+		p11 = 1
+	elif ef == 0:
+		p11 = 1
+	else:
+		alpha =( math.sqrt(1./ef)+1.)/(math.sqrt(1./ef)-1)
+		p11 = 16*alpha**2/(1+alpha)**4+(alpha-1)**2*(-alpha+1)**2/(1+alpha)**4 +8*alpha*(alpha-1)*(-alpha+1)/(alpha+1)**4
+	return p11

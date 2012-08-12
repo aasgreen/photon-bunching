@@ -429,7 +429,7 @@ for the $E$ field at later times. This is because the $E$ field at some time $t 
 \subsection{High-Level}
 \label{description}
 The protocol works in the following way. There is an AFC memory in a cavity. The cavity has a decay rate of $\kappa$ that can be changed somehow. There is a pulse of light sent in with a time-envelope of $\Theta(t)$, such that is incident
-upon the cavity at around $t~0$. Because of assumptions made in the AFC cavity protocol, the incident light pulse will
+upon the cavity at around $t\sim0$. Because of assumptions made in the AFC cavity protocol, the incident light pulse will
 overlap with a narrow gaussian function, that can be approximated as a delta function. We additionally assume that the
 impedence matching condition is on, such that $\kappa = \Gamma$, where $\Gamma$ is the absorption rate for the atoms within the gaussian spectral density. It has been shown that this can result in arbitrary close to unity efficiency. 
 
@@ -440,20 +440,21 @@ be in phase at $t = \frac{2 \pi}{\Delta}$. This means that the AFC is primed to 
 However, right when the AFC is going to re-emit, we send in a second pulse of light, with time-envelope $\Phi$. Additionally, we change the cavity decay rate $\kappa$, such that the emission efficiency is $50\%$. This results in an interference
 effect that I will show results in a $\frac{1}{2}$ probability of seeing two photons at that time.
 
-If, however, we don't observe the photons at that time, we know that they must have both been stored in the cavity. We wait an additional rephasing has occured at time $t = \frac{4\pi}{\Delta}$ time, and change the emission efficiency back to $100\%$ by setting $\kappa = \Gamma$. In this way, we 'flush out' the memory. The equations show that there is a $\frac{1}{2}$ chance of seeing two photons there.
+If, however, we don't observe the photons at that time, we know that they must have both been stored in the cavity. We wait until an additional rephasing has occured at time $t = \frac{4\pi}{\Delta}$ time, and change the emission efficiency back to $100\%$ by setting $\kappa = \Gamma$. In this way, we 'flush out' the memory. The equations show that there is a $\frac{1}{2}$ chance of seeing two photons there.
 
 Additionally, I will also show that there is a zero chance of first seeing a photon at $t = \frac{2 \pi}{\Delta}$ and then seeing an additional photon at time $t = \frac{4 \pi}{\Delta}$.
 
 A rough equivalence can be made to a physical beam splitter system, with two channels $a$ and $b$. If we have a time delay setup for any photons coming out in channel $b$, such that we introduce a delay of $\frac{2 \pi}{\Delta}$, and then
-we recombine the photons. If we have a photon detector set-up, we will still be able to see photon bunching. There will be a 1/2 chance of seeing two photons in channel $a$, which will arrive at the photon detector at some time $t_1$. There will also be a 1/2 chance of seeing two photons in channel $b$, which will arrive later at some time $t_1+\frac{2 \pi}{\Delta}$. 
+we recombine the two channels so they overlap in space.
+. If we have a photon detector set-up, we will still be able to see photon bunching. There will be a 1/2 chance of seeing two photons in channel $a$, which will arrive at the photon detector at some time $t_1$. There will also be a 1/2 chance of seeing two photons in channel $b$, which will arrive later at some time $t_1+\frac{2 \pi}{\Delta}$. 
 \subsection{AFC Photon Bunching}
 This subsection is laid out as follows. I will first define the initial state, as there are some sublities involved. Then, I will prove that the initial state will only allow certain terms in any expansion of the oppurators of interest. Then, I will show the equations for each of the three states:
 \begin{enumerate}
-\item | $\langle \psi_{20} | \Psi \rangle |^2$, two photons detected around $t~\frac{2\pi}{\Deta}$
-\item $ | \langle \psi_{02} | \Psi \rangle |^2 $, two photons detected around $t ~\frac{4 \pi}{\Delta}$
-\item $ | \langle \psi_{11} |\Psi \rangle |^2 $, one photon detected around $t~\frac{2\pi}{\Delta}$ and one photon 
-detected around $t~\frac{4\pi}{\Delta}$
-
+\item  $|\langle \psi_{20} | \Psi \rangle |^2$, two photons detected around $t\sim\frac{2\pi}{\Delta}$
+\item $ | \langle \psi_{02} | \Psi \rangle |^2 $, two photons detected around $t \sim\frac{4 \pi}{\Delta}$
+\item $ | \langle \psi_{11} |\Psi \rangle |^2 $, one photon detected around $t\sim\frac{2\pi}{\Delta}$ and one photon 
+detected around $t\sim\frac{4\pi}{\Delta}$
+\end{enumerate}
 \subsubsection{Initial State}
 Note: This is a pedantic section, and it is fairly dull. You can skip over it, as it isn't that important. I just define the initial state, and then show a couple of specific results that I will reference later.
 
@@ -472,52 +473,87 @@ the envelope function, $\Theta$ or $\Phi$.
 If we try to find the probability of seeing two photons exiting the cavity at some time $t$, we find the overlap between the two states:
 
 \begin{equation}
-| \rangle 0 | \frac{1}{sqrt{2}} E_{out}(t) E_{out}(t') |Psi |rangle |^2
+| \rangle 0 | \frac{1}{\sqrt{2}} E_{out}(t) E_{out}(t') |Psi |rangle |^2
 \end{equation}
 
-where $E_out$ is a heisenburg operator.
-
+where $E_{out}$ is a heisenburg operator.
+\subsubsection{Applying Operators to the Initial State}
+\label{sec:crossterms}
 I am going to use a simplified equation for $E_{out}$ in order to prove that only cross terms will survive the expansion. This also lets me elaborate on the notation.
 
-Assume that $E_{out}i(t) = a E_in(t) + b E_in(t-\frac{2\pi}{\Delta})$. 
+Assume that $E_{out}(t) = a E_{in}(t) + b E_{in}(t-\frac{2\pi}{\Delta})$. 
 
 Then, our probability for seeing two photons is at some time $t$ and $t'$:
+
 \begin{align}
-P2 = | \rangle 0 | \frac{1}{sqrt{2}} i(a^2 E_{in}(t) E_{in}(t') + b^2 E_in(t-\frac{2\pi}{\Delta}) E_in(t'-\frac{2\pi}{\Delta}) + ab E_{in}(t)E_in(t'-\frac{2\pi}{\Delta}) + abE_in(t-\frac{2\pi}{\Delta})E_{in}(t) ) |\Psi \rangle |^2 
+P2 &= | \langle 0 | \frac{1}{\sqrt{2}} (a^2 E_{in}(t) E_{in}(t') + b^2 E_{in}(t-\frac{2\pi}{\Delta}) E_{in}(t'-\frac{2\pi}{\Delta}) + ab E_{in}(t)E_{in}(t'-\frac{2\pi}{\Delta}) \\
+& \qquad+ baE_{in}(t-\frac{2\pi}{\Delta})E_{in}(t) ) |\Psi \rangle |^2 
 \end{align}
+
+Note, for this equation to be valid $t\sim t'$. They both have to be within the same neighborhood. Thus, the
+result I am proving is not a general one. Thus, if we are trying to detect two photons at around time $t =\frac{2 \pi}{\Delta}$, then the above equation will hold.
 
 If we look at the $a^2$ term, we can see that it won't survive when applied to the initial state.
 
 \begin{align}
-P2_1 =\langle 0 | a^2E_{in}(t) E_{in}(t') \int d t' \int dt \Theta (t') E^\dagger_{in}(t'') \Phi (t) E^\dagger_{in}(t''') | 0\rangle
+P2_1 =\langle 0 | a^2E_{in}(t) E_{in}(t') \int d t'' \int dt''' \Theta (t') E^\dagger_{in}(t'') \Phi (t) E^\dagger_{in}(t''') | 0\rangle
 \end{align}
 
 Earlier, when the input-output equations were derived, there was a communtation relation, defined as:
 \[
-[E_{in}(t), E^dagger_{in}(t')] = \delta(t-t')
+[E_{in}(t), E^\dagger_{in}(t')] = \delta(t-t')
 \]
 
 Now, we know that any creation operator acting on a vacuum state like $\langle 0 | a^\dagger = 0$, so we can use
 the commutation relations to 'shuffle' a creation operator to the very left, where it will destroy the vacuum. 
 
-Therefore, P2 becomes:
+Therefore, the $a^2$ term of $P2$ (called $P2_1$ from now on) becomes:
 \begin{align}
-P2_1 &=  \langle 0 |\int dt'' \int dt'''\Theta(t'')\Phi(t''') a^2 E_{in}(t)(E^\dagger_{in}(t'')E_{in}(t') +\delta(t'-t'') ) E\dagger_{in}(t''') |0|rangle\\
-& = \langle 0 | \int dt'' \int dt''' \Theta(t'') \Phi(t''') a^2 (E^\dagger_{in}(t'')E_{in}(t)+\delta(t-t''))E_{in}(t')E\dagger_{in}(t''')
+P2_1 &=  \langle 0 |\int dt'' \int dt'''\Theta(t'')\Phi(t''') a^2 E_{in}(t)\left(E^\dagger_{in}(t'')E_{in}(t') +\delta(t'-t'') \right) E^\dagger_{in}(t''') |0\rangle\\
+& = \langle 0 | \int dt'' \int dt''' \Theta(t'') \Phi(t''') a^2 \left(E^\dagger_{in}(t'')E_{in}(t)+\delta(t-t'')\right)E_{in}(t')E\dagger_{in}(t''')
 + E_{in}(t)\delta(t'-t'')E^\dagger_{in}(t''') \\
-&= \langle 0 |\int dt'' \int dt''' \Theta(t'') \Phi(t''') a^2 ( 0 + \delta(t-t'') (E^\dagger_{in}(t''')E_{in}(t') + \delta(t'-t''') ) + E_{in}(t)\delta(t'-t'')E^\dagger_{in}(t''')|0\rangle
-&= \int dt'' \int dt'''\Theta(t'')\Phi(t''') a^2(\delta(t-t'')\delta(t'-t''')+\delta(t'-t'')\delta(t-t''')
+&= \langle 0 |\int dt'' \int dt''' \Theta(t'') \Phi(t''') a^2 \left( 0 + \delta(t-t'') \left(E^\dagger_{in}(t''')E_{in}(t') + \delta(t'-t''') \right) + E_{in}(t)\delta(t'-t'')E^\dagger_{in}(t''')\right)|0\rangle\\
+&= \int dt'' \int dt'''\Theta(t'')\Phi(t''') a^2\left( \delta(t-t'')\delta(t'-t''')+\delta(t'-t'')\delta(t-t''')\right)\\
 &= a^2\Theta(t)\Phi(t')+a^2\Theta(t')\Phi(t)
 \end{align}
 
-So, in order to be more general, we would integrate this term over the local time of one of the teeth. More specifically, we would integrate this probability equation all over the areas where the equation is valid-- this is constrained to times $t~\frac{2 \pi}{\Delta}$. However, because we are integrating both $t$ and $t'$ at around the same values, the P2_1 term is zero, as we know that there is a time delay between both pulses. This is a subtle point, and I am not explaining it well. In order for the P2_1 term to have been valid, it would have needed something like:
+So, in order to be more general, we would integrate this term over the local time of one of the teeth. More specifically, we would integrate this probability equation all over the areas where the equation is valid-- this is constrained to times $t\sim\frac{2 \pi}{\Delta}$.
+However, because we are integrating both $t$ and $t'$ at around the same values, the $P2_1$ term is zero, as we know that there is a time delay between both pulses-- if one of them is non-zero, the other has to be zero.
+. This is a subtle point, and I am not explaining it well. In order for the $P2_1$ term to have been valid, it would have needed something like:
 \begin{align}
-P2_1 = a^2 \Theta(t-\frac{2\pi}{\Delta})\Phi(t') +a^2\Theta(t'-\frac{2\pi}{\Delta})\Phi(t)
+P2_1 = a^2 \Theta(t{\Delta})\Phi(t'-\frac{2 \pi}{\Delta}) +a^2\Theta(t'-\frac{2\pi}{\Delta})\Phi(t)
 \end{align}
 
-So that even though \Theta and \Phi don't overlap, the above function will evaluate to some non-zero. This only comes through in the cross terms.
+So that even though $\Theta$ and $\Phi$ don't overlap, the above function will evaluate to some non-zero. This only comes through in the cross terms.
 
 In my future calculations, I will take it as given that we can drop the $a^2$ and the $b^2$ terms. Ie, everything but the cross terms.
+
+
+We can also investigate the action of the cross-terms here, which will allow me to quote this result in the future. For the case of the cross terms, a similar methodology is used as above. In fact, one can simply take the above result and substitute $a^2 \Rightarrow ab,\qquad t' \Rightarrow t'-\frac{2 \pi}{\Delta}$
+
+For instance, the cross term $ab$ will become:
+\begin{align}
+P2_3 =\langle 0 | abE_{in}(t) E_{in}(t'-\frac{2 \pi}{\Delta}) \int d t' \int dt \Theta (t') E^\dagger_{in}(t'') \Phi (t) E^\dagger_{in}(t''') | 0\rangle
+\end{align}
+If we use exactly the same algorithm, we obtain as a result:
+
+\begin{align}
+P2_3(t,t') = ab \Theta(t)\Phi(t'-\frac{2 \pi}{\Delta}) + ab \Theta(t'-\frac{2 \pi}{\Delta}) \Phi(t)
+\end{align}
+
+I will quote the result later, as it saves me the work of expanding out and using the commutators each time.
+However, I think it would be worthwile to discuss the results. Keep in mind while reading this that the entire
+proof and discussion up to this moment is predicated on the assumption that $t\sim t'$, ie. they are both
+within the same neighborhood.
+
+If you consider two gaussian pulses, $\Theta(t)$ and $\Phi(t)$, such that $\Theta(t-\frac{2 \pi}{\Delta} )= \Phi(t)$, then we can see that $P2_1$ is always zero. For instance, if $t\sim 0$, then $\Theta(t) \neq 0$, but the gaussian pulse $\Phi$ hasn't started yet so $\Phi(t') =0$. If $t\sim \frac{2 \pi}{\Delta}$, then it is the other way around: $\Theta(t) = 0$ as this pulse was centered around zero, and $\Phi(t') \neq 0$ because it is centered around $\frac{2 \pi}{\Delta}$. 
+
+Using the same argument, we can see that $P2_3 \neq 0$, because we have introduced a retarding factor of $\frac{2 \pi}{\Delta}$ which brings the two pulses $\Theta$ and $\Phi$ back together. This will only occur for times $t\sim \frac{2 \pi}{\Delta}$. If $t\sim 0$, then $\Theta \neq 0$, but $\Phi(-\frac{2 \pi }{\Delta} )=0$, because the pulse hasn't even started yet. The other term $\Theta(-\frac{2 \pi}{\Delta}) =0$, because the $\Theta$ pulse is centered around 0.
+
+So for times $t\sim t'\sim \frac{2 \pi}{\Delta}$ $P2_3 \neq 0$.
+
+
+
 
 \subsubsection{The Three States}
 \label{sec:three}
@@ -527,21 +563,21 @@ In order to calculate the evolution of the states of interest, we first need to 
 P20(t,t') = | \langle 0 | \frac{1}{\sqrt{2}} E_{out}(t) E_{out}(t') | \Psi \rangle |^2
 \end{align}
 
-where $t~\frac{2\pi}{\Delta}$ and $t' ~\frac{1}{2 \pi}{\Delta}$
+where $t\sim\frac{2\pi}{\Delta}$ and $t' \sim\frac{2 \pi}{\Delta}$
 \begin{equation}
 \label{eq:p11}
-P11(t,t') = | \langle 0 | \frac{1}{\sqrt{2}} E_{out}(t) E_{out}(t') | \Psi \rangle |^2
+P11(t,t') = | \langle 0 |  E_{out}(t) E_{out}(t') | \Psi \rangle |^2
 \end{equation}
-where $t~\frac{2\pi}{\Delta}$ and $t'~\frac{4 \pi}{\Delta}$
+where $t\sim\frac{2\pi}{\Delta}$ and $t'\sim\frac{4 \pi}{\Delta}$
 
 \begin{equation}
 \label{eq:p02}
 P02(t,t') = | \langle 0 | \frac{1}{\sqrt{2}} E_{out}(t) E_{out}(t') | \Psi \rangle |^2
 \end{equation}
-where $t~\frac{4\pi}{\Delta}$ and $t'~\frac{4\pi}{\Delta}$
+where $t\sim\frac{4\pi}{\Delta}$ and $t'\sim\frac{4\pi}{\Delta}$
 
-So, the first deals with the probabilty of observing two photons around the neighborhood of $t~\frac{2 \pi}{\Delta}$, the second term deals with first observing a photon in the neighborhood of $t~\frac{2 \pi}{\Delta}$ and then observing a photon in the neighborhood of $t~\frac{4 \pi}{\Delta}$, and the third term deals with observing two photons in the neighborhood
-of $t~\frac{4 \pi}{\Delta}$
+So, the first deals with the probabilty of observing two photons around the neighborhood of $t\sim\frac{2 \pi}{\Delta}$, the second term deals with first observing a photon in the neighborhood of $t\sim\frac{2 \pi}{\Delta}$ and then observing a photon in the neighborhood of $t\sim\frac{4 \pi}{\Delta}$, and the third term deals with observing two photons in the neighborhood
+of $t\sim\frac{4 \pi}{\Delta}$
 
 \label{eqderv}
 \subsection{Photon Bunching}
@@ -559,13 +595,13 @@ E_{out} = \sqrt{2\kappa} - E_{in}
 So we must first calculate what the cavity field $E$ is doing. The equation of motion for $E$ is given by:
 
 \begin{align}
-\dot{E} = -\kappa E -iP\tilde{P}\int_{-infty}^t\tilde{n}(t-t')E(t')+\sqrt{2\kappa} E_{in}(t)
+\dot{E} = -\kappa E -iP\tilde{P}\int_{-\infty}^t dt'\tilde{n}(t-t')E(t')+\sqrt{2\kappa} E_{in}(t)
 \end{align}
 
-We can divide the integral up into two segments. The first segment $-\infty<t\le0$ is where the first pulse is being read in with unit efficiency. In the impedence matching paper, this condition was already derived, and the equation for $E$ during this time is $E = \frac{1}{\sqrt{2\kappa}}$, with $\kappa = \Gamma$, where $\kappa$ is the cavity decay rate, and $\Gamma$ is the absorption by the atomic frequency comb. However, in order to simplfy the equations that will come later, in the unit efficiency case, I will be rewriting the equations to include $\Gamma$ instead of $\kappa$. I can do this
+We can divide the integral up into two segments. The first segment $-\infty<t\le0$ is where the first pulse is being read in with unit efficiency. In the impedence matching paper, this condition was already derived, and the equation for $E$ during this time is $E = \frac{1}{\sqrt{2\kappa}}E_{in}(t)$, with $\kappa = \Gamma$, where $\kappa$ is the cavity decay rate, and $\Gamma$ is the absorption by the atomic frequency comb. However, in order to simplfy the equations that will come later, in the unit efficiency case, I will be rewriting the equations to include $\Gamma$ instead of $\kappa$. I can do this
 because of their equivalence, and it means that I won't have to worry about having different $\kappa$'s. This is because we will be changing the cavity decay rate, so $\kappa$ is not a constant in time. By renaming it to $\Gamma$, it will hopefully make the end equations more managable. So when ever you see a $\kappa$, you can assume it is a cavity decay rate that sets the absorption efficiency to 50\%.
 
-So, the second sequence is when $t'~t$, and in that case, $E(t')$ is just $E(t')$, as it is in the neighborhood of the time
+So, the second sequence is when $t'\sim t$, and in that case, $E(t')$ is just $E(t')$, as it is in the neighborhood of the time
 that we are evaluating at. Broken up this way, the equation becomes
 \begin{align}
 \dot{E} & = -\kappa E -2\Gamma \frac{1}{\sqrt{2\Gamma}}E_{in}(t-\frac{2 \pi}{\Delta}) -\Gamma E(t) +\sqrt{2 \kappa} E_{in}(t)
@@ -573,20 +609,387 @@ that we are evaluating at. Broken up this way, the equation becomes
 
 Using the usual trick of setting $\dot{E}=0$, we can solve for E:
 \begin{equation}
-E = \frac{\kappa +\Gamma} (\sqrt{2 \Gamma} E_{in}(t-\frac{2 \pi}{\Delta} +\sqrt{2 \kappa}E_{in}(t)
+E = \frac{1}{\kappa +\Gamma} \left(- \sqrt{2 \Gamma} E_{in}(t-\frac{2 \pi}{\Delta}) +\sqrt{2 \kappa}E_{in}(t)\right)
 \end{equation}
 
 So, using this equation in our equation for $E_{out}$, we get:
 
 \begin{align}
-E_{out} &= \frac{\sqrt{2\kappa}}{\kappa+\Gamma} (\sqrt{2 \Gamma} E_{in}(t- \frac{2 \pi}{\Delta} +\sqrt{2\kappa} E_{in}(t)_ - E_{in}(t)\\
-&= \frac{2 \sqrt{\kappa \Gamma}}{\kappa + \Gamma}E_in(t- \frac{2\pi}{\Delta} +\frac{\kappa - \Gamma}{\kappa+\Gamma} E_{in}(t)
+\label{eoutp20}
+E_{out} &= \frac{\sqrt{2\kappa}}{\kappa+\Gamma} \left(-\sqrt{2 \Gamma} E_{in}(t- \frac{2 \pi}{\Delta}) +\sqrt{2\kappa} E_{in}(t)\right) - E_{in}(t)\\
+&= -\frac{2 \sqrt{\kappa \Gamma}}{\kappa + \Gamma}E_{in}(t- \frac{2\pi}{\Delta}) +\frac{\kappa - \Gamma}{\kappa+\Gamma} E_{in}(t)
 \end{align}
 
+So, to set $\kappa$ so that the absorption efficiency is 50\% for a single pulse. The absorption efficiency
+for a single pulse is given by:
+
+\begin{equation}
+\eta = |\frac{\kappa-\Gamma}{\kappa+\Gamma}|^2
+\end{equation}
+
+Setting $\eta = .5$, we can derive the following relation between $\kappa$ and $\Gamma$:
+
+\begin{align}
+\frac{1}{\sqrt{2}} &= \frac{\kappa- \Gamma}{\kappa+\Gamma} \\
+\frac{1}{\sqrt{2}} (\kappa +\Gamma) &= \kappa - \Gamma \\
+(\frac{1}{\sqrt{2}}-1) \kappa &= (\frac{1}{\sqrt{2}}+1)\Gamma\\
+\kappa &= \Gamma \frac{\frac{1}{\sqrt{2}}+1}{\frac{1}{\sqrt{2}}-1}  
+\end{align}
+
+So, letting:
+\begin{equation}
+\label{kappagamma}
+\alpha = \frac{\frac{1}{\sqrt{2}}+1}{\frac{1}{\sqrt{2}}-1},
+\end{equation}
+then Eq~\eqref{eoutp20} becomes:
+\begin{align}
+E_{out} &= -\frac{2 \sqrt{\alpha}}{1+\alpha} E_{in}(t-\frac{2\pi}{\Delta}) + \frac{1}{\sqrt{2}} E_{in}(t)\\
+E_{out} &=- \frac{1}{\sqrt{2}} E_{in}(t-\frac{2 \pi}{\Delta}) + \frac{1}{\sqrt{2}} E_{in}(t)
+\end{align}
+
+And this is exactly the beamsplitter relation. To calculate the probability, we take:
+
+\begin{align}
+\label{afcp20s1}
+P20(t,t') = | \langle 0 |\frac{1}{\sqrt{2}} E_{out}(t) E_{out}(t') | \Psi \rangle |^2
+\end{align}
+
+We have shown in Section~\ref{sec:crossterms} that only the cross terms will survive when we expand Eq.~\eqref{afcp20s1} out. Using this knowledge, Eq.~\eqref{afcp20s1} becomes:
+\begin{align}
+P20(t,t') &= \left|\langle 0\left(\frac{1}{2} E_{in}(t-\frac{2 \pi}{\Delta})E_{in}(t')+\frac{1}{2} E_{in}(t'-\frac{2 \pi}{\Delta})E_{in}(t) \right)\Psi \rangle\right|^2  \\
+\end{align}
+
+Now, we can use the result we calculated in Section~\ref{sec:crossterms}, with $a =- \frac{1}{\sqrt{2}}$ and $b = \frac{1}{\sqrt{2}}$. 
+
+\begin{align}
+P20(t,t') &= \frac{1}{2}\left|- \frac{1}{2}\Theta(t-\frac{2 \pi}){\Delta}\Phi(t') -\frac{1}{2} \Theta(t'-\frac{2 \pi}{\Delta})\Phi(t)\right|^2\\
+P20(t,t') &= \frac{1}{2} \frac{1}{4} \left ( \Theta^2(t-\frac{2 \pi}{\Delta})\Phi^2(t')+\Theta^2(t'-\frac{2 \pi}{\Delta})\Phi^2(t)+2\Theta(t-\frac{2 \pi}{\Delta}) \Phi(t) \Theta(t'-\frac{2 \pi}{\Delta}) \Phi(t')\right)
+\end{align}
+Where $\Theta(t)$ is the envelope of the first pulse, incident around $t\sim 0$ and $\Phi(t)$ is the second pulse, incident around $t\sim \frac{2 \pi}{\Delta}$.
 
 
+Now, we are interested in detecting photons in the neighborhood of $t =\frac{2 \pi}{\Delta}$, so we need to integrate $P20(t,t')$. We are just integrating in the neighborhood of $t\sim \frac{2 \pi}{\Delta}$. $\int \Theta(t-\frac{2 \pi}{\Delta})^2(t) dt =1 $ and $\int \Phi^2(t') dt' =1$ due to normalization. Even though we are not integrating over all time,
+we are assuming the the incoming pulse is short enough that it is entirely included in the neighborhood of $t\sim \frac{2 \pi}{\Delta}$, so this assumption is valid. So, we can write our integral as:
+
+\begin{align}
+\label{afcp20s2}
+P20 &= \frac{1}{8}\left(\int dt \int dt' 
+ \left ( \Theta^2(t-\frac{2 \pi}{\Delta})\Phi^2(t')+\Theta^2(t'-\frac{2 \pi}{\Delta})\Phi^2(t)\right)+2\left(\int dt \int dt' \Theta(t'-\frac{2 \pi}{\Delta}) \Phi(t)\right)^2\right)
+\end{align}
+
+If we make the additional assumption that the two pulses have the same temporal shape, then the overlap integral in the third term in Eq~\eqref{afcp20s2} will evaluate to 1, and we get:
+
+\begin{align}
+\label{afcp20}
+P20 &= \frac{1}{8} \left( 1+1 +2\right)\\
+P20 &= \frac{1}{2}
+\end{align}
+
+Therefore, the probabilty of detecting two photons in the neighborhood of $\frac{2 \pi}{\Delta}$ is 1/2
+
+\subsubsection{ Two Photons at $t\sim \frac{4\pi}{\Delta}$}
+\label{sec:afcp02}
+The formalism of finding this out is very similar. First we need to calculate $E_{out}$ and then we can 
+calculate the probability.
+
+First, we are back to the impedence matching condition $\kappa = \Gamma$, as we have reset our mirror so
+we can 'flush` out our AFC. In order to avoid confusion with the $\kappa$ mirror term that was moved to get
+50\% efficiency previously, I will preemptively change all $\kappa$ terms to $\Gamma$, so that the only $\kappa$ terms will refer to the 50\% efficiency $\kappa$.
+Under this change,  the equation for $E_{out}$ goes from::
+
+\begin{equation}
+E_{out}(t) = \sqrt{2\kappa} E - E_{in}
+\end{equation}
+to
+\begin{equation}
+E_{out}(t) = \sqrt{2 \Gamma} E - E_{in}
+\end{equation}
+However, we are not sending in any new pulses, so around the time that we are evaluating $t \sim \frac{4 \pi}{\Delta}$, we can reduce this equation to:
+\begin{equation}
+E_{out}(t) = \sqrt{2\Gamma} E
+\end{equation}
+
+And the equation for $E$ is given by:
+\begin{equation}
+\dot{E} = -\Gamma E +\sqrt{2\Gamma} E_{in} - iP\tilde{P} \int^t_{-\infty} \tilde{n}(t-t') E(t')
+\end{equation}
+
+(Note: it used to be $\dot{E} = - \kappa E + \sqrt{2 \kappa} +...$, but since $\kappa = \Gamma$ in this case
+we can rewrite it with no loss of generality.)
+
+
+As noted before, $E_{in}(t\sim \frac{4 \pi}{\Delta}) = 0$. Additionally, as we did before, we can divide the intergral up into several segments:
+\begin{equation}
+\label{eq:afcp02s1}
+\dot{E} = -\Gamma E  -i P \tilde{P}\left( \int_{-\infty}^{0+\delta}\tilde{n}(t-t')E(t') dt'+\int^{\frac{2 \pi}{\Delta}+\delta}_{0+\delta} \tilde{n}(t-t') E(t') dt'+ \int^t_{\frac{2 \pi}{\Delta}+\delta} \tilde{n}(t-t') E(t') dt'\right)
+\end{equation}
+
+This highlights the use of the recursive strategy, as we need to know the values of $E$ for the different values of $t$:
+\begin{align}
+E(t'\sim 0) &= \frac{1}{\sqrt{2 \Gamma}} E_{in}(t')\\
+E(t' \sim \frac{2 \pi}{\Delta}) &=- \frac{\sqrt{2 \Gamma}}{\kappa +\Gamma} E_{in}(t'-\frac{2 \pi}{\Delta} )+\sqrt{t{2 \kappa}}{\kappa+\Gamma} E_{in}(t')\\
+\end{align}
+
+Inserting these identities in Eq~\eqref{eq:afcp02s1} as appropriate, we obtain:
+\begin{align}
+\dot{E} &= -\Gamma E  -i P \tilde{P}\left( \int_{-\infty}^{0+\delta}\tilde{n}(t-t')\left( \frac{1}{\sqrt{2 \Gamma}} E_{in}(t')\right)dt' \right. \\
+&\left. \qquad+\int^{\frac{2 \pi}{\Delta}+\delta}_{0+\delta} \tilde{n}(t-t') \left(- \frac{\sqrt{2 \Gamma}}{\kappa +\Gamma} E_{in}(t'-\frac{2 \pi}{\Delta}) +\frac{\sqrt{2 \kappa}}{\kappa+\Gamma} E_{in}(t')\right)dt'
++ \int^t_{\frac{2 \pi}{\Delta}+\delta} \tilde{n}(t-t') E(t') dt'\right)
+\end{align}
+
+We can now evaluate each integral in turn. The first term in the integral expansion looks like:
+\begin{equation}
+I1 \propto \int dt' \tilde{n}(t-t')E_{in}(t')
+\end{equation}
+with $t \sim \frac{4 \pi}{\Delta}$ and $t'\sim 0$. This means that $t-t'\sim \frac{4\pi}{\Delta}$. Since
+$\tilde{n}(x)$ is a comb of approximate delta functions spaced by $\frac{2\pi}{\Delta}$, we know that
+there will be an approximate delta function that occurs when $x \sim \frac{4 \pi}{\Delta}$. Therefore, our integral term $I1$ becomes:
+\begin{equation}
+I1 \propto 2 \Gamma \sqrt{\eta_{F2}} E_{in}
+\end{equation}
+The term $\sqrt{\eta_{F2}}$ is due to the irreversible dephasing that is present due to the finite width
+of the approximate delta functions. It is actually very important, and I take a brief pause in my derivation of the probability P02 to discuss it now.
+\paragraph{The Important Subtleties of Dephasing Terms}
+\vspace{10 mm}
+The original impedence matching paper pointed out that there would be irriversible atomic dephasing that is
+due to the fact that the approximate delta functions in $\tilde{n}(t-t')$ have some non-zero width. So, for a single pulse being stored with unit efficiency, the read-out equations will look like:
+\begin{align}
+\dot{E} &= -\kappa E - i P \tilde{P} \int^t_{-\infty} \tilde{n}(t-t') E \\
+\dot{E} &= -\kappa E(t) -  2\Gamma \sqrt{\eta_{F}} \frac{1}{2\Gamma}E_{in}(t-\frac{2 \pi}{\Delta}) - \Gamma E(t)
+\end{align}
+Setting $\dot{E}=0$, we obtain:
+\begin{align}
+E(t) = -\frac{\sqrt{2 \Gamma}}{\kappa+\Gamma} E_{in}(t-\frac{2 \pi}{\Delta}) \sqrt{\eta_{F}}
+\end{align}
+and under the impedence matching condition($\kappa = \Gamma$), this becomes:
+\begin{align}
+E(t) = -\frac{1}{\sqrt{2\kappa}}\sqrt{\eta_{F}} E_{in}(t-\frac{2 \pi}{\Delta})
+\end{align}
+Therefore, $E_{out} = -\sqrt{\eta_F} E_{in}(t-\frac{2 \pi}{\Delta})$.
+
+It is reasonable to expect that this irreversible dephasing has some time dependence-- the longer that the
+pulse stays in the atom, we would expect it to become more and more randomly dephased. Above, the pulse
+stayed in the atom for an effective time of $t = \frac{2 \pi}{\Delta}$, and it became randomally dephased by
+a factor of $\sqrt{\eta_{F}}$.
+
+However, we are now dealing with pulses that are staying in the atomic memory for times $t = \frac{4 \pi}{\Delta}$, so how what is the factor of random dephasing now? 
+
+We can use a conservation of energy argument to prove that the random dephasing that occurs when a pulse stays in for $t=\frac{4 \pi}{\Delta}$ is the square of the random dephasing that occurs when a pulse stays in for $t = \frac{ 2 \pi}{\Delta}$. The argument is as follows.
+
+If we consider the situation we have mathematically described above, we have the following:
+\begin{enumerate}
+\item A pulse is incident on an AFC quantum memory and is read in with perfect efficiency
+\item The pulse stays in the atomic memory for a time $t = \frac{2 \pi}{\Delta}$ where it undergoes random dephasing 
+\item The pulse is read out completely, expect for the fraction lost to the random dephasing in the memory-- represented by the factor $\sqrt{\eta_F}$.
+\end{enumerate}.
+
+So, if we look at subsequent echoes-- say at $t = \frac{4 \pi}{\Delta}$, we know that $E_{out}(t)$ has to equal zero. The entire pulse was read out at time $t=\frac{2 \pi}{\Delta}$, so there is nothing left to read out. 
+
+So, looking at solution of $E(t)$ when $t\sim \frac{ 4 \pi}{\Delta}$, we get:
+\begin{align}
+\dot{E} = -\kappa  -i P \tilde{P}\left( \int_{-\infty}^{0+\delta}\tilde{n}(t-t')E(t') dt'+\int^{\frac{2 \pi}{\Delta}+\delta}_{0+\delta} \tilde{n}(t-t') E(t') dt'+ \int^t_{\frac{2 \pi}{\Delta}+\delta} \tilde{n}(t-t') E(t') dt'\right)
+\end{align}
+and we know the values of $E$ for different times:
+\begin{align}
+E(t\sim 0) &= \frac{1}{\sqrt{2\kappa}}E_{in}(t)\\
+E(t\sim \frac{2 \pi}{\Delta}) &= -\frac{1}{\sqrt{2\kappa}}\sqrt{\eta_{F}} E_{in}(t-\frac{2 \pi}{\Delta})
+\end{align}
+So, our integral becomes:
+\begin{align}
+\dot{E} &= -\kappa E  -i P \tilde{P}\left( \int_{-\infty}^{0+\delta}\tilde{n}(t-t') \frac{1}{\sqrt{2\kappa}}E_{in}(t) dt'\right.\\
+&\left. \qquad-\int^{\frac{2 \pi}{\Delta}+\delta}_{0+\delta} \tilde{n}(t-t')  \frac{1}{\sqrt{2\kappa}}\sqrt{\eta_{F}} E_{in}(t-\frac{2 \pi}{\Delta}) dt'
++ \int^t_{\frac{2 \pi}{\Delta}+\delta} \tilde{n}(t-t') E(t') dt'\right)
+\end{align}
+
+As before, the $\tilde{n}(t-t')$ has a peak around $t-t' = \frac{4 \pi}{\Delta}$, but as discussed before
+we need to include an additional dephasing term due to the fact that the pulse has stayed in the atomic memory for $t = \frac{4 \pi}{\Delta}$. We will call this term $\sqrt{ \eta_{F2}}$.
+
+For the second term in the integral expasion, when $t'\sim \frac{2 \pi}{\Delta}$, the $\tilde{n}(t-t')$ term has a peak, as $t -t' \sim \frac{ 2 \pi}{\Delta}$. However, we will get the usual dephasing term $\sqrt{\eta_{F}}$, because all that matters in the $\tilde{n}(t-t')$ is the change in time. As this change in time is $\frac{2 \pi}{\Delta}$, we get the random dephasing term $\eta_{F}$.
+
+Under these assumptions the above equation for the cavity field becomes:
+\begin{align}
+\dot{E} = -\kappa E -\Gamma E - \frac{2 \Gamma \sqrt{\eta_{F2}}}{\sqrt{2 \kappa}} E_{in}(t-\frac{4 \pi}{\Delta})+\frac{2 \Gamma \eta_{F}}{\sqrt{2 \kappa}} E_{in}\left((t-\frac{2 \pi}{\Delta})-\frac{2 \pi}{\Delta}\right)
+\end{align}
+
+Notice, in the above equation we have a term $E_{in}\left( (t -\frac{2 \pi}{\Delta}) - \frac{2 \pi}{\Delta}\right)$, which is due to the fact that upon applying the approximate delta function to $E_{in}$, the delta function will act on the argument of $E_{in}(x)$ to retard it by another $\frac{2 \pi}{\Delta}$.
+
+
+Again, using the fact that $\dot{E}=0$ and $\Gamma= \kappa$ and $E_{out} = \sqrt{2 \kappa} E$, we have a
+solution for $E_{out}$ given by:
+\begin{align}
+E_{out} = -\sqrt{\eta_{F2}}E_{in}(t-\frac{4 \pi}{\Delta}) + \eta_{F} E_{in}(t- \frac{ 4 \pi}{\Delta})
+\end{align}
+
+We can interpret the terms in the equation in the following way. The first term with $\sqrt{\eta_{F2}}$, is
+due to an actual photon-echo. The atoms in the various 'teeth' in the AFC continue to gain phase, coming back in phase at the period condition $t_1+\frac{2 \pi}{\Delta}$, where $t_1$ is the time of the last echo.
+
+However, at time $t_1$, the AFC emitted a photon pulse. This gave rise to a non-zero cavity field. I can
+only explain the second term by assuming that a part of this cavity field was reabsorbed, by the AFC.
+
+We also know that $E_{out}(t\sim \frac{4 \pi}{\Delta})=0$, as we read out the entire pulse at time $\frac{2 \pi}{\Delta}$.
+
+Therefore, $\sqrt{\eta_{F2}} = \eta_F$, and there is an interference between the rephasing of the original pulse, and an re-absorption/re-emission pulse that perfectly cancels out.
+
+Now that we have this result, I can continue with my derivation of the $P02$ probability.
+\paragraph{Back to Derivation of P02}
+The equation we had before our detour looked like:
+\begin{align}
+\label{eq:afcp02s3}
+\dot{E} &= -\Gamma E  -i P \tilde{P}\left( \int_{-\infty}^{0+\delta}\tilde{n}(t-t')\left( \frac{1}{\sqrt{2 \Gamma}} E_{in}(t')\right)dt' \right. \\
+&\left. \qquad+\int^{\frac{2 \pi}{\Delta}+\delta}_{0+\delta} \tilde{n}(t-t') \left(- \frac{\sqrt{2 \Gamma}}{\kappa +\Gamma} E_{in}(t-\frac{2 \pi}{\Delta}) +\frac{\sqrt{2 \kappa}}{\kappa+\Gamma} E_{in}(t')\right)dt'
++ \int^t_{\frac{2 \pi}{\Delta}+\delta} \tilde{n}(t-t') E(t') dt'\right)
+\end{align}
+
+And we were going to evaluate each integral term in turn. The first term in the integral expansion looks like:
+\begin{equation}
+I1 \propto \int dt' \tilde{n}(t-t')E_{in}(t')
+\end{equation}
+Which becomes:
+\begin{equation}
+I1 \propto 2 \Gamma \sqrt{\eta_{F2}} E_{in}
+\end{equation}
+And now we know that $\sqrt{\eta_{F2}}=\eta_{F}$.
+
+The second term in the integral expansion looks like:
+\begin{equation}
+I2 \propto \int dt' \left( \tilde{n}(t-t')E_{in}(t'-\frac{2 \pi}{\Delta}) - \tilde{n}(t-t')E_{in}(t') \right) dt',
+\end{equation}
+where $t'\sim \frac{2 \pi}{\Delta}$
+We know that $\tilde{n}(x)$ has a peak when $x \sim \frac{2 \pi}{\Delta}$, and the action of $\tilde{n}(x)$ in that regime is to multiply $E_{in}(y)$ by a factor, $\sqrt{\eta_F}\beta$, and retard it by $\frac{2 \pi}{\Delta}$ to get $\sqrt{\eta_F}\beta E_in(y-\frac{2 \pi}{\Delta})$
+
+This gives $I2$ as:
+\begin{equation}
+I2 \propto \sqrt{\eta_F}2 \beta E_in( t - \frac{4 \pi}{\Delta}) -\sqrt{\eta_F} \beta E_in( t - \frac{2 \pi}{\Delta})
+\end{equation}
+
+And then $I3 \propto \Gamma E(t)$ as usual.
+
+Now, doing the bookkeeping properly for all of the factors, our equation for the cavity field $E$ Eq.~\eqref{eq:afcp02s3} has become:
+\begin{equation}
+\dot{E}= -\Gamma E(t) -\Gamma E(t)-\eta_F \frac{ 2 \Gamma}{\sqrt{2 \Gamma}} E_{in}(t -\frac{ 4 \pi}{\Delta}) +\eta_F 2 \Gamma \frac{\sqrt{2 \Gamma}}{\kappa+\Gamma}E_{in}(t-\frac{4\pi}{\Delta}) -\sqrt{\eta_F} 2 \Gamma \frac{\sqrt{2\kappa}}{\kappa+\Gamma} E_{in}(t-\frac{2 \pi}{\Delta})
+\end{equation}
+
+So, setting $\dot{E}=0$, and using the equation for $E_{out} = \sqrt{2\Gamma}E$, we have our equation for $E_{out}(t)$, given by:
+\begin{equation}
+E_{out}(t) =\frac{\sqrt{2\Gamma}}{2 \Gamma}\left( \left(-\eta_F \frac{2 \Gamma}{\sqrt{2\Gamma}}+\eta_F 2 \Gamma \frac{\sqrt{2 \Gamma}}{\kappa+\Gamma} \right ) E_{in}(t-\frac{ 4 \pi}{\Delta} )-\sqrt{\eta_F} \frac{\sqrt{2 \kappa}2\Gamma}{\kappa+\Gamma}E_{in}(t-\frac{2 \pi}{\Delta}) \right)\\
+\end{equation}
+\begin{align}
+\label{eq:afcp02gen}
+E_{out}(t) &= \left ( \left(-\eta_F +\eta_F\frac{2 \Gamma}{\kappa+\Gamma}\right) E_{in}(t-\frac{4 \pi}{\Delta})-\sqrt{\eta_F}2\frac{\sqrt{\kappa\Gamma}}{\kappa+\Gamma}E_{in}(t-\frac{2 \pi}{\Delta})\right)
+\end{align}
+
+This is the general equation for $E_{out}$, where $\kappa$ is the value of $\kappa$ at time $t\sim \frac{2 \pi}{\Delta}$. If we want the beamsplitter relationship, we already have an equation that relates $\kappa$ and $\Gamma$, given by Eq.~\eqref{kappagamma}.
+\begin{equation}
+\kappa = \alpha \Gamma
+\end{equation}
+where $\alpha = \frac{ \sqrt{2} +1}{\sqrt{2} -1}$.
+
+Using this relation, Eq.~\eqref{eq:afcp02gen} becomes:
+\begin{align}
+E_{out}(t) &= \left ( -\eta_F + \eta_F \frac{2}{\alpha+1}\right)E_{in}(t-\frac{4 \pi}{\Delta}) - \sqrt{\eta_F}\frac{2\sqrt{\alpha}}{\alpha+1}\\
+E_{out}(t) &= \eta_F\frac{-\alpha+1}{\alpha+1}E_{in}(t-\frac{4 \pi}{\Delta}) - \sqrt{\eta_F}\frac{2\sqrt{\alpha}}{\alpha+1}\\
+\end{align}
+and under evaluation, this becomes:
+\begin{equation}
+E_{out}(t) = -\eta_F\frac{1}{\sqrt{2}}E_{in}(t-\frac{4\pi}{\Delta}) - \sqrt{\eta_F}\frac{1}{\sqrt{2}}E_{in}(t-\frac{2 \pi}{\Delta})
+\end{equation}
+Now, there are definitely some imperfections that arise from the $\eta_F$ terms, but if we neglect those,
+we have a perfect beamsplitter relation.
+
+We can find the probability using a very similar method as in the previous Section. 
+\begin{equation}
+P02(t,t') = |\langle 0| \frac{1}{\sqrt{2}} E_{out}(t) E_{out}(t')|\Psi\rangle|^2
+\end{equation}
+when both $t$ and $t'$ are in the neighborhood of $\frac{4 \pi}{\Delta}$. i.e. $t\sim t' \sim \frac{ 4 \pi}{\Delta}$.
+And by using the same arguments, only terms that contain both $E_{in}(t-\frac{4 \pi}{\Delta})$ and $E_{in}(t -\frac{2 \pi}{\Delta})$ will survive. 
+
+The only thing that changes is that instead of having $E_{in}(t-\frac{2 \pi}{\Delta})$ and $E_{in}(t)$, both of these operators are retarded by an additional $\frac{2 \pi}{\Delta}$, but it makes
+no difference to the arguments I used to show that only the cross terms will survive.
+
+Additionally, we can re-use a lot of the same methodology from the previous section.
+
+\begin{align}
+P02(t,t') & =\frac{1}{2}\left| \frac{1}{2}\Theta(t-\frac{4\pi}{\Delta})\Phi(t'-\frac{2 \pi}{\Delta})+\frac{1}{2}\Theta(t'-\frac{4 \pi}{\Delta})\Phi(t-\frac{2 \pi}{\Delta})\right|^2\\
+P02(t,t') &= \frac{1}{8} \left(\Theta^2(t-\frac{4\pi}{\Delta})\Phi^2(t'-\frac{2 \pi}{\Delta})+\Theta^2(t'-\frac{4\pi}{\Delta})\Phi^2(t-\frac{2 \pi}{\Delta})\right.\\
+&\left. \qquad +2\Theta(t-\frac{4\pi}{\Delta})\Phi(t'-\frac{2 \pi}{\Delta})\Theta(t'-\frac{4\pi}{\Delta})\Phi(t-\frac{2 \pi}{\Delta})\right)
+\end{align}
+
+Now, we are concered with finding the probability of detecting two photons around the neighborhood of $t \sim \frac{4 \pi}{\Delta}$ and $t' \sim \frac{4 \pi}{\Delta}$, so we need to integrate $P20(t,t')$ over that neighborhood of time for $t$ and $t'$. 
+
+We also know that $\int^{\frac{4 \pi}{\Delta} +\delta}_{\frac{4 \pi}{\Delta}-\delta} \Theta^2(t-\frac{4\pi}{\Delta} )dt =1$ and$\int^{\frac{4 \pi}{\Delta} +\delta}_{\frac{4 \pi}{\Delta}-\delta} \Phi^2(t-\frac{2\pi}{\Delta}) dt =1$. Additionally, if the $\Theta$ and $\Phi$ have the same temporal shape, then the overlap integral between them will also evaluate to 1. so our equation for detecting two photons around time $t\sim \frac{4 \pi}{\Delta}$ is given by:
+\begin{align}
+\label{eq:afcp02bs}
+P02 = \int dt \int dt' P02(t,t') &= \frac{1}{8} \left (\int dt \int dt'\Theta^2(t-\frac{4\pi}{\Delta})\Phi^2(t'-\frac{2 \pi}{\Delta})+\int dt \int dt'\Theta^2(t'-\frac{4\pi}{\Delta})\Phi^2(t-\frac{2 \pi}{\Delta})\right.\\
+&\left. \qquad +2\left (\int dt \Theta(t-\frac{4\pi}{\Delta})\Phi(t'-\frac{2 \pi}{\Delta})\right)^2\right)\\
+P02 &= \frac{1}{8}\left( 1 + 1 +2\right)\\
+P02 &= \frac{1}{2}
+\end{align}
+So, the probability of detecting two photons around $\frac{4\pi}{\Delta}$ is $\frac{1}{2}$, in agreement with the beamsplitter.
+
+\subsubsection{P11: Detecting one photon at time $t_1 \sim \frac{2 \pi}{\Delta}$ and then a subsequent photon at time $t_2 \sim \frac{4 \pi}{\Delta}$}
+We have already defined $P11(t_1,t_2)$ to be:
+\begin{equation}
+P11(t_1,t_2) = | \langle 0 | E_{out}(t_1) E_{out}(t_2) |\Psi\rangle|^2
+\end{equation}
+And, We have already derived the equations for $E_{out}(t_1)$ and $E_{out}(t_2)$ in the previous two sections. Their result is shown below for reference:
+\begin{align}
+E_{out}(t_1) &= -\sqrt{\eta_F}\frac{1}{\sqrt{2}}E_{in}(t_1-\frac{2 \pi}{\Delta}) +\frac{1}{\sqrt{2}}E_{in}(t_1)\\
+E_{out}(t_2) &= -\eta_F\frac{1}{\sqrt{2}}E_{in}(t_2-\frac{4\pi}{\Delta})-\sqrt{\eta_F}\frac{1}{\sqrt{2}}E_{in}(t_2-\frac{2\pi}{\Delta})
+\end{align}
+
+Now, the only terms that will survive when we mutiply $E_{out}(t_1)$ and $E_{out}(t_2)$ will be terms that contain either: $E_{in}(t_1-\frac{2 \pi}{\Delta})E_{in}(t_2-\frac{2 \pi}{\Delta})$, or $E_{in}(t_1)E_{in}(t_2-\frac{4 \pi}{\Delta})$. The reason becomes more apparent if we relabel the arguments of each term.
+Both factors can be written as $E_{in}(x_1)E_{in}(x_2)$, where:
+\begin{align}
+x_1 & \sim 0 \\
+x_2 & \sim \frac{2 \pi}{\Delta}
+\end{align}
+Then, it becomes more transparent how application of the arguments I made at the beginning of this Section about the cross-terms will apply to the case we are discussing now.
+
+If we only focus on the arguments $x_1$ and $x_2$, then the above equation has the same form as we discussed in Section~\ref{sec:crossterms}, and we can conclude that again, only the cross terms will survive.
+
+If only the cross terms survive, then $P11(t_1,t_2)$ becomes:
+\begin{align}
+P11(t_1,t_2) & =\left|  \eta_F\frac{1}{2}\Theta(t_1-\frac{2 \pi}{\Delta})\Phi(t_2-\frac{2 \pi}{\Delta})-\eta_F\frac{1}{2}\Phi(t_1)\Theta(t_2-\frac{4 \pi}{\Delta})\right|^2\\
+P11(t_1,t_2) & =  \frac{1}{4}\eta_F^2 \left( \Theta^2(t_1-\frac{2 \pi}{\Delta})\Phi^2(t_2-\frac{2 \pi}{\Delta})+\Phi^2(t_1)\Theta^2(t_2-\frac{4 \pi}{\Delta})\right. \\
+&\left. \qquad -2\Theta(t_1-\frac{2 \pi}{\Delta})\Phi(t_2-\frac{2 \pi}{\Delta})\Phi(t_1)\Theta(t_2-\frac{4 \pi}{\Delta})^2\right)\\
+\end{align}
+
+Again, as before, we need to integrate over the neighborhood where $t_1 \sim \frac{2 \pi}{\Delta}$ and then where $t_2 \sim \frac{4 \pi}{\Delta}$. Then our full probability $P11$ is:
+\begin{align}
+P11 = \int^{\frac{4 \pi}{\Delta}+\delta}_{\frac{4 \pi}{\Delta}-\delta}dt_2 \int^{\frac{2 \pi}{\Delta}+\delta}_{\frac{2 \pi}{\Delta}-\delta}dt_1 P11(t_1, t_2)\\
+\end{align}
+
+And using similar arguments as the previous sections, this can be reduced to:
+\begin{align}
+P11 &= \frac{1}{4}\left ( 1 + 1 -2\right) \\
+P11 &= 0
+\end{align}
 \subsection{AFC Photon Interference}
+It is very easy to generalize the equations above for any effiency. The only thing that will change
+is the factor of $\alpha$ that relates $\kappa$ to $\Gamma$. We can find the relationship between
+$\alpha$ and the efficiency by using the equation for the effiency of a single pulse being absorbed.
+\begin{align}
+\frac{\kappa - \Gamma}{\kappa+\Gamma}& = \sqrt{\textrm{ef}} \\
+\kappa \left(1-\sqrt{\textrm{ef}}\right) &= \Gamma \left(\sqrt{\textrm{ef}}+1\right)\\
+\kappa &= \frac{\sqrt{\textrm{ef}} + 1}{1-\sqrt{\textrm{ef}}}\Gamma\\
+\kappa &= \alpha \Gamma
+\end{align}
+
+So, keeping the factor of $\alpha$ instead of evaluating it for a specific efficiency, we can
+obtain general equations for all three probabilites:
+\begin{align}
+P20 & =8\alpha \frac{(\alpha -1)^2}{(\alpha+1)^4} \\
+P02 &= 8\alpha \frac{(1-\alpha)^2}{(1+\alpha)^4}\\
+P11 & = 16\frac{\alpha^2}{(1+\alpha)^4} +\frac{(\alpha-1)^2(1-\alpha)^2}{(1+\alpha)^4}+8\alpha \frac{(\alpha-1)(\alpha+1)}{(\alpha+1)^4}\\
+\end{align}
 \label{general}
+
+\begin{figure}[H]
+\epsfig{file=afcp.eps,width=1. \columnwidth}
+\caption{The probability functions of two photons seperated by a time $\frac{2 \pi}{\Delta}$, incident on an AFC memory in a cavity. P20 and P02 give the same values. Note the
+equivalence to the beamsplitter curve.}
+
+\end{figure}
 
 
 \section{Conclusion}
